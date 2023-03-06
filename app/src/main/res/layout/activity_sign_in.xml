@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".src.signin.SignInActivity"
+    android:background="@color/background_sign_in"
+    android:paddingHorizontal="15dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_sign_in_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/language"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/iv_sign_in_logo"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_sign_in_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/img_logo_instagram"
+        app:layout_constraintTop_toBottomOf="@id/btn_sign_in_language"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_sign_in_userId"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_edt_sign_in_background"
+        android:textSize="18sp"
+        android:hint="@string/hint_id_sign_in"
+        android:paddingHorizontal="14dp"
+        android:textColorHint="@color/edt_hint_sign_in"
+        app:layout_constraintTop_toBottomOf="@id/iv_sign_in_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_sign_in_password"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_edt_sign_in_background"
+        android:textSize="18sp"
+        android:hint="@string/hint_pw_sign_in"
+        android:paddingHorizontal="14dp"
+        android:textColorHint="@color/edt_hint_sign_in"
+        app:layout_constraintTop_toBottomOf="@id/edt_sign_in_userId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_sign_in"
+        android:textSize="18sp"
+        android:background="@drawable/shape_btn_sign_in_background"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/edt_sign_in_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_forget_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_forget_pw"
+        android:textSize="14sp"
+        android:textColor="@color/tv_forget_pw"
+        app:layout_constraintTop_toBottomOf="@id/btn_sign_in"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_sign_up"
+        android:textSize="15sp"
+        android:background="@drawable/shape_btn_sign_up_background"
+        android:textColor="@color/tv_forget_pw"
+        app:layout_constraintTop_toBottomOf="@id/tv_forget_pw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:src="@drawable/img_logo_meta_gray"
+        app:layout_constraintTop_toBottomOf="@id/btn_sign_up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

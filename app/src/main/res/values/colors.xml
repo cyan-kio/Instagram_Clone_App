@@ -14,6 +14,24 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Custom -->
-    <color name="splash_from">#717a8b</color>
+    <!-- Splash -->
+    <color name="splash_from">#FF717a8b</color>
+
+    <!-- Profile Image -->
+    <color name="profile_img_stroke">#FF656565</color>
+
+    <!-- Comment -->
+    <color name="comment_show_create">#FF5A5A5A</color>
+
+    <!-- Sign In -->
+    <color name="edt_stroke_sign_in">#FFAAAAAA</color>
+    <color name="edt_hint_sign_in">#FF93A8C5</color>
+    <color name="background_sign_in">#FFf6f6f4</color>
+    <color name="btn_sign_in">#FF2961d8</color>
+    <color name="tv_forget_pw">#FF232a32</color>
+
+    <!-- Profile -->
+    <color name="btn_profile_background">#FFefefef</color>
+    <color name="btn_see_all">#3B86D5</color>
+
 </resources>
