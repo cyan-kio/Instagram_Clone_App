@@ -32,6 +32,7 @@
 
     <!-- Profile -->
     <color name="btn_profile_background">#FFefefef</color>
-    <color name="btn_see_all">#3B86D5</color>
+    <color name="btn_see_all">#FF3B86D5</color>
+    <color name="tabs_indicator_color">#E8E8E8</color>
 
 </resources>
