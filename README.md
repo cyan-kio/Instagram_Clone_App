@@ -14,3 +14,7 @@
 + Profile 화면 xml 작성
 + SignIn 화면 xml 작성
 
+## 2023-03-07 진행상황
++ Profile 화면 xml 작성(Pager, CollapsingToolbar)
++ SignUp 화면 xml 작성
+
