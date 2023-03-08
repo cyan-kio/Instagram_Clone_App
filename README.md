@@ -18,3 +18,8 @@
 + Profile 화면 xml 작성(Pager, CollapsingToolbar)
 + SignUp 화면 xml 작성
 
+## 2023-03-08 진행상황
++ SignUp 프로필 설정 화면
++ SignUp 약관 동의 화면
++ Strings.xml
+
