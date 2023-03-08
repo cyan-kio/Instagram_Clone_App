@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_profile"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:background="@color/white"
         app:contentInsetStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,50 +18,60 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="18dp">
+            android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_icon_toolbar_profile_private"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/img_icon_private"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/iv_toolbar_profile_icon_logo"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:src="@drawable/img_logo_instagram_text"
-                android:text="@string/userName"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_icon_toolbar_profile_private"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.4" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_icon_toolbar_profile_logo_press"
-                android:layout_width="12dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:src="@drawable/img_toolbar_icon_profile_press"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_toolbar_profile_icon_logo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.4"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_icon_toolbar_profile_private"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/img_icon_private"
+                    android:visibility="visible"
+                    android:layout_gravity="center_vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/iv_toolbar_profile_icon_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/img_logo_instagram_text"
+                    android:text="@string/userName"
+                    android:textColor="@color/black"
+                    android:includeFontPadding="false"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_icon_toolbar_profile_private"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.4" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_icon_toolbar_profile_logo_press"
+                    android:layout_width="11dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:src="@drawable/img_toolbar_icon_profile_press"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_toolbar_profile_icon_logo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.4"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btn_toolbar_profile_icon_post"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginEnd="22dp"
                 android:src="@drawable/img_btm_navi_icon_post"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -70,13 +80,21 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btn_toolbar_profile_icon_more"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/img_icon_more"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="18dp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:background="@color/stroke"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.appcompat.widget.Toolbar>
@@ -100,7 +118,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_collapseMode="pin">
+                    app:layout_collapseMode="pin"
+                    android:paddingTop="10dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/const_profile_top"
@@ -327,7 +346,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/see_all"
-                                android:textColor="@color/btn_see_all"
+                                android:textColor="@color/tv_button"
                                 android:textSize="14sp"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -364,7 +383,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.7dp"
-                    android:background="@color/tabs_indicator_color"
+                    android:background="@color/stroke"
                     app:layout_constraintBottom_toBottomOf="@id/tabs_profile"
                     app:layout_constraintStart_toStartOf="@id/tabs_profile"
                     app:layout_constraintEnd_toEndOf="@id/tabs_profile"/>
@@ -374,7 +393,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager_profile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@id/tabs_profile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

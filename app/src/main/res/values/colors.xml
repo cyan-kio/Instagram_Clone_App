@@ -14,6 +14,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- stroke color-->
+    <color name="stroke">#FFE8E8E8</color>
+
     <!-- Splash -->
     <color name="splash_from">#FF717a8b</color>
 
@@ -24,15 +27,21 @@
     <color name="comment_show_create">#FF5A5A5A</color>
 
     <!-- Sign In -->
-    <color name="edt_stroke_sign_in">#FFAAAAAA</color>
+    <color name="edt_stroke_sign_in">#D1D1D1</color>
     <color name="edt_hint_sign_in">#FF93A8C5</color>
     <color name="background_sign_in">#FFf6f6f4</color>
     <color name="btn_sign_in">#FF2961d8</color>
     <color name="tv_forget_pw">#FF232a32</color>
+    <color name="tv_guide_sms">#FF313C49</color>
+    <color name="already_signed_up">#FF2961d8</color>
 
     <!-- Profile -->
     <color name="btn_profile_background">#FFefefef</color>
-    <color name="btn_see_all">#FF3B86D5</color>
-    <color name="tabs_indicator_color">#E8E8E8</color>
+    <color name="tv_button">#FF3B86D5</color>
+    <color name="tv_guide">#FF8A8A8A</color>
+    <color name="tv_related_user">#FF5A5A5A</color>
+    <color name="btn_follow">#FF4293ef</color>
+
+
 
 </resources>

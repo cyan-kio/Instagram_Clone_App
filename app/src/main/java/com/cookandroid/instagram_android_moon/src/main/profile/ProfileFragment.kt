@@ -15,14 +15,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile) {
 
-    private val tabIconList = listOf(R.drawable.selector_tabitem_icon_profile_feed_grid, R.drawable.selector_tabitem_icon_profile_tagged_grid)
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // ViewPager2
         val pagerAdapter = ProfilePagerAdapter(requireActivity())
-        pagerAdapter.addFragment(ProfilePagerFragment("Feed Grid"))
-        pagerAdapter.addFragment(ProfilePagerFragment("Tagged Grid"))
+        pagerAdapter.addFragment(ProfilePagerFragment(1))
+        pagerAdapter.addFragment(ProfilePagerFragment(2))
         binding.viewpagerProfile.adapter = pagerAdapter
         binding.viewpagerProfile.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
