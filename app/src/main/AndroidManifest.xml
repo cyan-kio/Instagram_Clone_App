@@ -16,6 +16,34 @@
         tools:ignore="AllowBackup"
         tools:targetApi="31">
         <activity
+            android:name=".src.discover.people.DiscoverPeopleActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".src.discover.contact.DiscoverContactActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".src.discover.facebook.DiscoverFacebookActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".src.welcome.WelcomeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".src.signup.SignUpActivity"
             android:exported="false">
             <meta-data

@@ -42,6 +42,8 @@
     <color name="tv_related_user">#FF5A5A5A</color>
     <color name="btn_follow">#FF4293ef</color>
 
+    <color name="background_add_profile_image">#FFf5fbf7</color>
+    <color name="background_welcome">#FFf6f9fe</color>
 
 
 </resources>

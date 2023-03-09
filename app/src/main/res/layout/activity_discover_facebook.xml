@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".src.discover.facebook.DiscoverFacebookActivity"
+    android:padding="35dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_follow_icon_image"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/img_follow_icon_image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_discover_facebook_friends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/discover_facebook_friends_for_following"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/iv_follow_icon_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_discover_facebook_friends_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/discover_facebook_friends_for_following_guide"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="@color/tv_guide"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="1dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_discover_facebook_friends"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_discover_facebook_friends"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/discover_facebook_friends"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:background="@drawable/shape_btn_follow"
+        android:textColor="@color/white"
+        android:stateListAnimator="@null"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_discover_facebook_friends_guide"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btn_discover_facebook_friends_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skip"
+        android:textSize="14sp"
+        android:textColor="@color/btn_follow"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_discover_facebook_friends"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -112,7 +112,7 @@
     <string name="add_profile_image_take_a_picture">사진 찍기</string>
     <!-- welcome_instagram -->
     <string name="welcome_instagram_with_user_name">${userName}님, Instagram에 오신 것을 환영합니다</string>
-    <string name="welcome_instagram_guide">이제 몇 가지 단계를 통해 이용 환경을 원하는 대로 설정해보세요</string>
+    <string name="welcome_instagram_guide">이제 몇 가지 단계를 통해 이용 환경을 원하는 대로\n설정해보세요</string>
     <!-- agreement_to_use_Instagram -->
     <string name="agreement_to_use_Instagram">Instagram 앱을 사용하려면 다음 항목에 동의해야 합니다</string>
     <string name="agreement_to_use_Instagram_guide">다음은 Meta에서 서비스를 제공하기 위해 회원님의 정보를 이용할 수 있는 몇 가지 주된 방법입니다. 회원님이 각 항목을 검토하고 동의하셔야 합니다.</string>
@@ -132,12 +132,12 @@
     <string name="close">닫기</string>
     <!-- discover_facebook_friends_for_following -->
     <string name="discover_facebook_friends_for_following">팔로우할 Facebook 친구 찾기</string>
-    <string name="discover_facebook_friends_for_following_guide">회원님이 팔로우할 사람을 직접 선택하며,\n회원님의 허락 없이는 Facebook에 게시되지 않습니다.</string>
+    <string name="discover_facebook_friends_for_following_guide">회원님이 팔로우할 사람을 직접 선택하며,\n회원님의 허락 없이는 Facebook에 게시되지\n않습니다.</string>
     <string name="discover_facebook_friends">친구 찾기</string>
     <string name="discover_facebook_friends_dialog_guide">Instagram은 친구들과 함께할수록 즐겁습니다. 게시물을 보고 싶은 친구를 팔로우해보세요. 이 단계를 건너뛰시겠어요?</string>
     <!-- discover_friends_with_contact_sync -->
-    <string name="discover_friends_with_contact_sync">연락처를 동기화하여 친구를 찾아보세요</string>
-    <string name="discover_friends_with_contact_guide">Instagram에서 아는 사람을 찾고 팔로우할 사람을 선택하세요.</string>
+    <string name="discover_friends_with_contact">연락처를 동기화하여 친구를 찾아보세요</string>
+    <string name="discover_friends_with_contact_guide">Instagram에서 아는 사람을 찾고 팔로우할 사람을\n선택하세요.</string>
     <string name="discover_friends_with_contact_guide_sync">연락처가 정기적으로 동기화되고 서버에 안전하게 저장됩니다.\n설정에서 언제든지 동기화를 해제할 수 있습니다. 더 알아보기.</string>
     <string name="sync">동기화</string>
 
