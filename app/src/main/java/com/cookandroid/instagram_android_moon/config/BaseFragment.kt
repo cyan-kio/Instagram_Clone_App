@@ -1,6 +1,6 @@
 package com.cookandroid.instagram_android_moon.config
 
-import android.content.Context
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,5 +31,10 @@ abstract class BaseFragment<B : ViewBinding>(
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    // Toast
+    fun showCustomToast(message: String) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }

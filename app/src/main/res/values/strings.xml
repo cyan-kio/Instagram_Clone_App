@@ -16,12 +16,14 @@
     <string name="uesr_introduction">introduction</string>
     <string name="place">place</string>
     <string name="like">좋아요 0개</string>
-    <string name="content">userName / content</string>
+    <string name="content">                      content</string>
     <string name="comment_all_show">댓글 모두 보기</string>
     <string name="comments">userName / comment</string>
     <string name="add_comment">댓글 추가&#8230;</string>
+    <string name="add_reply">답글 달기</string>
     <string name="post_date">0일 전</string>
     <string name="translate"> · 번역 보기</string>
+    <string name="edited"> · 수정됨</string>
     <string name="profile_edit">프로필 편집</string>
     <string name="profile_share">프로필 공유</string>
     <string name="discover_people">사람 찾아보기</string>
@@ -39,6 +41,10 @@
     <string name="tagged_photo_guide">사람들이 회원님을 사진 및 동영상에 태그하면\n태그된 사진 및 동영상이 여기에 표시됩니다.</string>
     <!-- 사람 찾아보기 안내 -->
     <string name="new_sign_up">Instagram 신규 가입</string>
+
+    <!-- comment -->
+    <string name="comment">댓글</string>
+    <string name="comment_post">게시</string>
 
 
     <!-- sign_in -->

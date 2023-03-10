@@ -1,17 +1,29 @@
 package com.cookandroid.instagram_android_moon.src.main
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.BaseActivity
 import com.cookandroid.instagram_android_moon.databinding.ActivityMainBinding
-import com.cookandroid.instagram_android_moon.databinding.ActivitySplashBinding
-import kotlin.math.exp
+import com.cookandroid.instagram_android_moon.src.main.explore.ExploreFragment
+import com.cookandroid.instagram_android_moon.src.main.home.HomeFragment
+import com.cookandroid.instagram_android_moon.src.main.post.PostFragment
+import com.cookandroid.instagram_android_moon.src.main.profile.ProfileFragment
+import com.cookandroid.instagram_android_moon.src.main.reels.ReelsFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+    lateinit var homeFragment: HomeFragment
+    lateinit var exploreFragment: ExploreFragment
+    lateinit var postFragment: PostFragment
+    lateinit var reelsFragment: ReelsFragment
+    lateinit var profileFragment: ProfileFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        fragmentInitInMain()
+
+        // btm_navi_item_tint
         binding.btmNaviMain.itemIconTintList = null
 
         changeFragment(R.id.container_main, homeFragment)
@@ -21,6 +33,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         super.onResume()
 
         btmNaviItemSelect()
+    }
+
+    private fun fragmentInitInMain() {
+        homeFragment = HomeFragment()
+        exploreFragment = ExploreFragment()
+        postFragment = PostFragment()
+        reelsFragment = ReelsFragment()
+        profileFragment = ProfileFragment()
     }
 
     fun btmNaviItemSelect() {
