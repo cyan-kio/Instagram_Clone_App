@@ -34,6 +34,7 @@
     <color name="tv_forget_pw">#FF232a32</color>
     <color name="tv_guide_sms">#FF313C49</color>
     <color name="already_signed_up">#FF2961d8</color>
+    <color name="edt_hint_stroke">#293139</color>
 
     <!-- Profile -->
     <color name="btn_profile_background">#FFefefef</color>
@@ -44,6 +45,4 @@
 
     <color name="background_add_profile_image">#FFf5fbf7</color>
     <color name="background_welcome">#FFf6f9fe</color>
-
-
 </resources>

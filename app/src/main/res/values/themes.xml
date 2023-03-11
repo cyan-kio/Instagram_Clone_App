@@ -14,4 +14,18 @@
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
+    <style name="textInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+
+        <item name="colorPrimary">@color/black</item>
+        <item name="android:textColorHint">@color/edt_hint_sign_in</item>  // hint 색
+        <item name="hintTextColor">@color/edt_hint_stroke</item>   // floating hint 색
+
+        <item name="helperText">@color/colorPrimary</item> // xml 에서 한 속성을 여기서도 할 수 있습니다.
+        <item name="helperTextTextColor">@color/colorPrimary</item>
+
+        <item name="errorTextColor">@color/colorPrimary</item>
+
+
+    </style>
 </resources>
