@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_get_email_address_sign_up_for_email"
+        android:id="@+id/btn_get_email_address_sign_up_for_phone_number"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:text="@string/sign_up_for_phone_number"

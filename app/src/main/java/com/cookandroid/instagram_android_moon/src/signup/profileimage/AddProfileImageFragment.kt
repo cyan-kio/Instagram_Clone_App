@@ -1,60 +1,61 @@
 package com.cookandroid.instagram_android_moon.src.signup.profileimage
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.cookandroid.instagram_android_moon.R
+import com.cookandroid.instagram_android_moon.config.BaseFragment
+import com.cookandroid.instagram_android_moon.databinding.FragmentAddProfileImageBinding
+import com.cookandroid.instagram_android_moon.src.signup.SignUpActivity
+import com.cookandroid.instagram_android_moon.src.signup.SignUpService
+import com.cookandroid.instagram_android_moon.src.signup.model.PostEmailSignUpRequest
+import com.cookandroid.instagram_android_moon.src.signup.model.PostPhoneSignUpRequest
+import com.cookandroid.instagram_android_moon.src.signup.model.SignUpViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class AddProfileImageFragment : BaseFragment<FragmentAddProfileImageBinding>(
+    FragmentAddProfileImageBinding::bind, R.layout.fragment_add_profile_image){
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddProfileImageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AddProfileImageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val signUpViewModel: SignUpViewModel by activityViewModels()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        val signUpActivity = activity as SignUpActivity
+
+        // 프로필 사진 추가
+        binding.btnAddProfileImageAddImage.setOnClickListener {
+
+//            navigatePhotos()
+//            signUpViewModel.apply {
+//                nickname = binding.edtGetUserName.text.toString()
+//            }
+            signUpActivity.changeFragmentWithAddBackStack(R.id.fragment_container_sign_up, signUpActivity.getAgreementOnTermsFragment)
+        }
+
+        binding.btnAddProfileImageAddSkip.setOnClickListener {
+                val verify_method = signUpViewModel.verify_method
+                val birth_date = signUpViewModel.birth_date
+                val nickname = signUpViewModel.nickname
+                val password = signUpViewModel.password
+                val profile_image_url = signUpViewModel.profile_image_url
+                when(signUpViewModel.signup_method){
+                    0-> {
+                        val postRequest = PostPhoneSignUpRequest(phone_number = verify_method, birth_date = birth_date
+                            ,nickname = nickname, password = password, profile_image_url = profile_image_url)
+                        SignUpService(signUpActivity).tryPostPhoneSignUp(postRequest)
+                    }
+                    1-> {
+                        val postRequest = PostEmailSignUpRequest(email_address = verify_method, birth_date = birth_date
+                            ,nickname = nickname, password = password, profile_image_url = profile_image_url)
+                        SignUpService(signUpActivity).tryPostEmailSignUp(postRequest)
+                    }
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_profile_image, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddProfileImageFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddProfileImageFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun navigatePhotos() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(intent,2000)
     }
 }

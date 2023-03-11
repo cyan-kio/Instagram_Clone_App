@@ -12,11 +12,11 @@ import com.cookandroid.instagram_android_moon.src.main.profile.ProfileFragment
 import com.cookandroid.instagram_android_moon.src.main.reels.ReelsFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
-    lateinit var homeFragment: HomeFragment
-    lateinit var exploreFragment: ExploreFragment
-    lateinit var postFragment: PostFragment
-    lateinit var reelsFragment: ReelsFragment
-    lateinit var profileFragment: ProfileFragment
+    private lateinit var homeFragment: HomeFragment
+    private lateinit var exploreFragment: ExploreFragment
+    private lateinit var postFragment: PostFragment
+    private lateinit var reelsFragment: ReelsFragment
+    private lateinit var profileFragment: ProfileFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

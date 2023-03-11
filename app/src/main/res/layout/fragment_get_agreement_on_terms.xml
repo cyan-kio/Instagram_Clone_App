@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_see_all"
+        android:id="@+id/btn_get_agreement_on_terms_select_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select_all"
@@ -160,7 +160,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_get_birth_date_next"
+        android:id="@+id/btn_get_agreement_on_terms_next"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:text="@string/agree"
@@ -173,7 +173,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btn_get_birth_date_already_signed_up"
+        android:id="@+id/btn_get_agreement_on_terms_already_signed_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/already_signed_up"

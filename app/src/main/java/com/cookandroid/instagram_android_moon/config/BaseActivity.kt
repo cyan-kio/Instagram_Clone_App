@@ -22,7 +22,14 @@ abstract class BaseActivity<B : ViewBinding>(private val inflate: (LayoutInflate
     fun changeFragment(container: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(container, fragment)
-            .commitAllowingStateLoss()
+            .commit()
+    }
+
+    fun changeFragmentWithAddBackStack(container: Int, fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     // Toast
