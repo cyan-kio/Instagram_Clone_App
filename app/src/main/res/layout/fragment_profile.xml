@@ -34,14 +34,14 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:src="@drawable/img_icon_private"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/iv_toolbar_profile_icon_logo"
+                    android:id="@+id/tv_toolbar_profile_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -57,13 +57,13 @@
                     app:layout_constraintVertical_bias="0.4" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_icon_toolbar_profile_logo_press"
+                    android:id="@+id/tv_toolbar_profile_username_press"
                     android:layout_width="11dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
                     android:src="@drawable/img_toolbar_icon_profile_press"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/iv_toolbar_profile_icon_logo"
+                    app:layout_constraintStart_toEndOf="@id/tv_toolbar_profile_username"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.4"/>
             </androidx.constraintlayout.widget.ConstraintLayout>

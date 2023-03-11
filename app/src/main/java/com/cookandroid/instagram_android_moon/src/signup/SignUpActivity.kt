@@ -43,9 +43,10 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
     override fun onPostSignUpSuccess(response: SignUpResponse) {
         val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
-        editor.putString("X_ACCESS_TOKEN", response.result.jwt)
-        editor.commit()
-        response.message.let { showCustomToast(it) }
+        editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.jwt)
+        editor.putString(ApplicationClass.LOGIN_USER_ID, response.result.user_id.toString())
+        editor.apply()
+        response.message?.let { showCustomToast(it) }
         val intent = Intent(this@SignUpActivity, WelcomeActivity::class.java)
         finishAffinity()
         startActivity(intent)
