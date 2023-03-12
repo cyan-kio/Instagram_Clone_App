@@ -19,7 +19,7 @@ import com.cookandroid.instagram_android_moon.src.main.profile.profilepager.Prof
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile), ProfileFragmentInterface {
-    private lateinit var resultProfile: ResultProfile
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -66,17 +66,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         }
     }
 
-    override fun onGetProfileSuccess(response: ProfileResponse) {
-        resultProfile = response.result
-        profileInit(resultProfile)
-        response.message?.let { showCustomToast(it) }
-    }
-
-    override fun onGetProfileFailure(message: String) {
-        showCustomToast("오류 : $message")
-        Log.d("ProfileError", message)
-    }
-
     fun getTabView(position: Int): View {
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.item_tab_profile, null, false)
         val iv_Icon = view.findViewById<ImageView>(R.id.iv_tab_item_profile)
@@ -99,6 +88,20 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             tvProfileTopFollowerCount.text = resultProfile.follower_count.toString()
             tvProfileTopFollowingCount.text = resultProfile.following_count.toString()
         }
-
     }
+
+
+    override fun onGetProfileSuccess(response: ProfileResponse) {
+        val resultProfile = response.result
+        profileInit(resultProfile)
+        response.message?.let { showCustomToast(it) }
+    }
+
+    override fun onGetProfileFailure(message: String) {
+        showCustomToast("오류 : $message")
+        Log.d("ProfileError", message)
+    }
+
+
+
 }

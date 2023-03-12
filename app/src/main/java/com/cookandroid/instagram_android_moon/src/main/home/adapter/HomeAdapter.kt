@@ -6,12 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeBinding
-import com.cookandroid.instagram_android_moon.src.main.home.model.ResultHomeFeeds
 
-class HomeAdapter(val context: Context, resultHomeFeeds: MutableList<ResultHomeFeeds>) :
+class HomeAdapter(val context: Context, storyAdapter: StoryAdapter, feedAdapter: FeedAdapter) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
-    private val feedAdapter = FeedAdapter(context, resultHomeFeeds)
-    private val storyAdapter = StoryAdapter(context)
     private val adapterlist = listOf(HomeData(storyAdapter, feedAdapter))
 
     inner class ViewHolder(val binding: ItemRecyclerHomeBinding) :

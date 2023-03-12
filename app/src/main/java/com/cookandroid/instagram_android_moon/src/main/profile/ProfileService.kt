@@ -24,4 +24,5 @@ class ProfileService(val profileFragmentInterface: ProfileFragmentInterface) {
             }
         })
     }
+
 }
