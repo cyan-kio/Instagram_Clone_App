@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.ApplicationClass
+import com.cookandroid.instagram_android_moon.config.ApplicationClass.Companion.LOGIN_USER_ID
 import com.cookandroid.instagram_android_moon.config.BaseFragment
 import com.cookandroid.instagram_android_moon.databinding.FragmentProfileBinding
 import com.cookandroid.instagram_android_moon.src.main.profile.adapter.ProfilePagerAdapter
@@ -18,14 +19,15 @@ import com.cookandroid.instagram_android_moon.src.main.profile.profilepager.Prof
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile), ProfileFragmentInterface {
-    private lateinit var user_id: String
-    private lateinit var result_get_profile: ResultProfile
+    private lateinit var resultProfile: ResultProfile
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Path_Argument
-        val user_id: String? = ApplicationClass.sSharedPreferences.getString(ApplicationClass.LOGIN_USER_ID, null)
-        if(user_id != null) ProfileService(this).tryGetProfile(user_id = user_id.toInt())
+        val userId: String? = ApplicationClass.sSharedPreferences.getString(LOGIN_USER_ID, null)
+        if(userId != null) {
+            ProfileService(this).tryGetProfile(user_id = userId.toInt())
+        }
         else Log.d("GetProfileError", "user_id is null")
 
 
@@ -65,13 +67,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
-        result_get_profile = response.result
+        resultProfile = response.result
+        profileInit(resultProfile)
         response.message?.let { showCustomToast(it) }
     }
 
     override fun onGetProfileFailure(message: String) {
         showCustomToast("오류 : $message")
-        Log.d("SignInError", "$message")
+        Log.d("ProfileError", message)
     }
 
     fun getTabView(position: Int): View {
@@ -85,16 +88,16 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         return view
     }
 
-    fun profileInit() {
+    private fun profileInit(resultProfile: ResultProfile) {
         // profile_binding
-        Glide.with(this).load(result_get_profile.profile_image_url).into(binding.ivProfileTopImage)
+        Glide.with(this).load(resultProfile.profile_image_url).into(binding.ivProfileTopImage)
         binding.apply {
-            tvToolbarProfileUsername.text = result_get_profile.nickname
-            tvProfileUserInfoUserName.text =result_get_profile.nickname
-            tvProfileUserInfoIntroduction.text = result_get_profile.introduce
-            tvProfileTopPostingCount.text = result_get_profile.post_count.toString()
-            tvProfileTopFollowerCount.text = result_get_profile.follower_count.toString()
-            tvProfileTopFollowingCount.text = result_get_profile.following_count.toString()
+            tvToolbarProfileUsername.text = resultProfile.nickname
+            tvProfileUserInfoUserName.text =resultProfile.nickname
+            tvProfileUserInfoIntroduction.text = resultProfile.introduce
+            tvProfileTopPostingCount.text = resultProfile.post_count.toString()
+            tvProfileTopFollowerCount.text = resultProfile.follower_count.toString()
+            tvProfileTopFollowingCount.text = resultProfile.following_count.toString()
         }
 
     }

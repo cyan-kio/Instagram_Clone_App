@@ -18,7 +18,7 @@ data class ResultProfile(
     @SerializedName("connected_count") val connected_count: Int,
     @SerializedName("connected_friend_profiles") val connected_friend_profiles: Array<String>,
     @SerializedName("account_status") val account_status: Boolean,
-    @SerializedName("created_at") val created_at: Int,
+    @SerializedName("created_at") val created_at: String,
     @SerializedName("updated_at") val updated_at: String
 
 )

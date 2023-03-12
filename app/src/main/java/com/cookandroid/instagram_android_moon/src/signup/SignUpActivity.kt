@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.ApplicationClass
+import com.cookandroid.instagram_android_moon.config.ApplicationClass.Companion.LOGIN_USER_ID
+import com.cookandroid.instagram_android_moon.config.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.cookandroid.instagram_android_moon.config.BaseActivity
 import com.cookandroid.instagram_android_moon.databinding.ActivitySignUpBinding
 import com.cookandroid.instagram_android_moon.src.signup.birthdate.GetBirthDateFragment
@@ -43,8 +45,8 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
     override fun onPostSignUpSuccess(response: SignUpResponse) {
         val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
-        editor.putString(ApplicationClass.X_ACCESS_TOKEN, response.result.jwt)
-        editor.putString(ApplicationClass.LOGIN_USER_ID, response.result.user_id.toString())
+        editor.putString(X_ACCESS_TOKEN, response.result.jwt)
+        editor.putString(LOGIN_USER_ID, response.result.user_id.toString())
         editor.apply()
         response.message?.let { showCustomToast(it) }
         val intent = Intent(this@SignUpActivity, WelcomeActivity::class.java)
