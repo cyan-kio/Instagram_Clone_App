@@ -37,3 +37,7 @@
 + 프로필 조회 api 연동 작업
 + View 수정
 
+## 2023-03-12 진행상황
++ Home_Feeds_api 연동
++ Profile_Feeds_api 연동
++ Profile_api 연동
