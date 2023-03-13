@@ -3,17 +3,42 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingStart="5dp"
-    android:paddingEnd="3dp">
+    android:paddingHorizontal="5dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_item_story_profile_img"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+    <FrameLayout
+        android:id="@+id/frame_item_story_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_item_story_profile_userName"/>
+        app:layout_constraintBottom_toTopOf="@id/tv_item_story_profile_userName">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_story_view_check"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/shape_story_view_status_check"
+            android:visibility="gone"
+            android:layout_gravity="center"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_story_view_uncheck"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:visibility="gone"
+            android:background="@drawable/shape_story_view_status_uncheck"
+            android:layout_gravity="center"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_story_profile_img"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_profile_img_round_background"/>
+    </FrameLayout>
+
+
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_item_story_profile_userName"
@@ -24,6 +49,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_item_story_profile_img"/>
+        app:layout_constraintTop_toBottomOf="@id/frame_item_story_img"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

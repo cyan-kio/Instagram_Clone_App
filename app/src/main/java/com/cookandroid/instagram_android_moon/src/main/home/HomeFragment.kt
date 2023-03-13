@@ -8,31 +8,23 @@ import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.BaseFragment
 import com.cookandroid.instagram_android_moon.databinding.FragmentHomeBinding
 import com.cookandroid.instagram_android_moon.src.main.home.adapter.FeedAdapter
+import com.cookandroid.instagram_android_moon.src.main.home.adapter.StoryAdapter
 import com.cookandroid.instagram_android_moon.src.main.home.model.HomeFeedsResponse
+import com.cookandroid.instagram_android_moon.src.main.home.model.HomeStoriesResponse
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home), HomeFragmentInterface {
     private lateinit var feedAdapter : FeedAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val thread = Thread {
+        val homeFeedsThread = Thread {
             HomeService(this).tryGetHomeFeeds()
         }
-        thread.start()
-        thread.join()
-
-         // Recycler_Home
-//        binding.recyclerHome.apply {
-//            adapter = HomeAdapter(context, StoryAdapter(context), feedAdapter)
-//            layoutManager =
-//                LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-//        }
-//        binding.recyclerHomeStory.apply {
-//            adapter = StoryAdapter(context)
-//            layoutManager =
-//                LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-//        }
-//        binding.scrollViewHome.isSmoothScrollingEnabled = true
+        val homeStoryThread = Thread {
+            HomeService(this).tryGetHomeStories()
+        }
+        homeFeedsThread.start()
+        homeStoryThread.start()
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
@@ -58,29 +50,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         }
         response.message?.let { showCustomToast(it) }
-        // recycler_home_feed
-
-        //        val thread = Thread {
-//            resultHomeFeeds.addAll(response.result)
-//            Thread.sleep(2000)
-//        }
-//        thread.start()
-//        try {
-//            thread.join()
-//        } catch (e:Exception) {
-//            e.printStackTrace()
-//        }
-//        Log.d("CHECKONETWO", resultHomeFeeds[0].profileName)
-//        response.message?.let { showCustomToast(it) }
-
-//        binding.recyclerHomeFeed.apply {
-//            adapter = FeedAdapter(context, response.result)
-//            layoutManager =
-//                LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-//        }
     }
 
     override fun onGetHomeFeedsFailure(message: String) {
+        showCustomToast("오류 : $message")
+        Log.d("ProfileError", message)
+    }
+
+    override fun onGetHomeStoriesSuccess(response: HomeStoriesResponse) {
+        binding.recyclerHomeStory.apply {
+            adapter = StoryAdapter(context, response.result)
+            layoutManager =
+                LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        }
+        response.message?.let { showCustomToast(it) }
+    }
+
+    override fun onGetHomeStoriesFailure(message: String) {
         showCustomToast("오류 : $message")
         Log.d("ProfileError", message)
     }

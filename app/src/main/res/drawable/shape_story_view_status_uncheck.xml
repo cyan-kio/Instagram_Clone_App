@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="ring"
+    android:useLevel="false"
+    android:innerRadiusRatio="2.15"
+    android:thickness="2.5dp">
+
+    <solid
+        android:color="@color/story_view_status"/>
+
+    <gradient
+        android:angle="45"
+        android:type="linear"
+        android:startColor="#FFDA91"
+        android:centerColor="#FF43B4"
+        android:endColor="#8800FF"/>
+
+
+
+
+</shape>

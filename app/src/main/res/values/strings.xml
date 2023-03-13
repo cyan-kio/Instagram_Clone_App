@@ -36,6 +36,10 @@
     <string name="follow">팔로우</string>
     <string name="follower">팔로워</string>
     <string name="following">팔로잉</string>
+
+    <!-- story -->
+    <string name="myStory">내 스토리</string>
+
     <!-- 새 게시물 안내 -->
     <string name="add_photo_profile">프로필</string>
     <string name="add_photo_guide">사진과 동영상을 공유하면 프로필에\n표시됩니다.</string>

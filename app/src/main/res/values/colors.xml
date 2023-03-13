@@ -22,6 +22,7 @@
 
     <!-- Profile Image -->
     <color name="profile_img_stroke">#FF656565</color>
+    <color name="story_view_status">#D1D1D1</color>
 
     <!-- Comment -->
     <color name="comment_show_create">#FF5A5A5A</color>
