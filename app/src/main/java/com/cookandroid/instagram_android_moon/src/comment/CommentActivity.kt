@@ -1,10 +1,14 @@
 package com.cookandroid.instagram_android_moon.src.comment
 
 import android.os.Bundle
+import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookandroid.instagram_android_moon.config.BaseActivity
 import com.cookandroid.instagram_android_moon.databinding.ActivityCommentBinding
+import com.cookandroid.instagram_android_moon.src.comment.adapter.CommentAdapter
+import com.cookandroid.instagram_android_moon.src.comment.model.CommentsResponse
 
-class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBinding::inflate) {
+class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBinding::inflate), CommentActivityInterface {
     val RED_HEART = 0x2764
     val RAISING_HANDS = 0x1F64C
     val FIRE = 0x1F525
@@ -16,6 +20,10 @@ class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBind
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // receive
+        val postId = intent.getIntExtra("postId", 0)
+        Log.d("POSTIDCHECK", postId.toString())
+        CommentService(this).tryGetComments(postId)
 
         binding.tvCommentBtmEmojiFire.text = getEmojiByUnicode(FIRE)
         binding.tvCommentBtmEmojiRedHeart.text = getEmojiByUnicode(RED_HEART)
@@ -25,7 +33,20 @@ class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBind
         binding.tvCommentBtmEmojiOpenMouth.text = getEmojiByUnicode(OPEN_MOUTH)
         binding.tvCommentBtmEmojiHeartEyes.text = getEmojiByUnicode(HEART_EYES)
         binding.tvCommentBtmEmojiTearsOfJoy.text = getEmojiByUnicode(TEARS_OF_JOY)
+
     }
 
     fun getEmojiByUnicode(unicode: Int) :String = String(Character.toChars(unicode))
+
+    override fun onGetCommentsSuccess(response: CommentsResponse) {
+        val commentsResponse = response.result
+        binding.recyclerCommentComment.apply {
+            adapter = CommentAdapter(this@CommentActivity, commentsResponse)
+            layoutManager = LinearLayoutManager(this@CommentActivity, LinearLayoutManager.VERTICAL, false)
+        }
+    }
+
+    override fun onGetCommentsFailure(message: String) {
+        TODO("Not yet implemented")
+    }
 }

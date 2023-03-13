@@ -1,6 +1,7 @@
 package com.cookandroid.instagram_android_moon.src.main.home.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeFeedBinding
+import com.cookandroid.instagram_android_moon.src.comment.CommentActivity
 import com.cookandroid.instagram_android_moon.src.main.home.model.ResultHomeFeeds
+import java.util.Calendar
 
 class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList<ResultHomeFeeds>) :
     RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
@@ -44,6 +47,13 @@ class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList
 
             // likeOn
             binding.btnMidHomeFeedLike.isChecked = item.likeOn == 1
+
+            // viewComment_click
+            binding.tvContentHomeFeedCommentShow.setOnClickListener {
+                val intent = Intent(context, CommentActivity::class.java)
+                intent.putExtra("postId", item.postId)
+                context.startActivity(intent)
+            }
         }
     }
 

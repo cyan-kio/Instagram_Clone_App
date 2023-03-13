@@ -52,10 +52,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
     }
 
     override fun onGetHomeFeedsSuccess(response: HomeFeedsResponse) {
-            binding.recyclerHomeFeed.apply {
-            adapter = FeedAdapter(context, response.result)
-            layoutManager =
-                LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerHomeFeed.apply {
+        adapter = FeedAdapter(context, response.result)
+        layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         }
         response.message?.let { showCustomToast(it) }
         // recycler_home_feed
