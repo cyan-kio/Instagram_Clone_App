@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeFeedBinding
 import com.cookandroid.instagram_android_moon.src.comment.CommentActivity
 import com.cookandroid.instagram_android_moon.src.main.home.model.ResultHomeFeeds
+import com.cookandroid.instagram_android_moon.util.ElapsedTimeFunction
+import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList<ResultHomeFeeds>) :
@@ -48,14 +50,24 @@ class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList
             // likeOn
             binding.btnMidHomeFeedLike.isChecked = item.likeOn == 1
 
+            // createdAt
+            binding.tvHomeFeedPostDate.text = ElapsedTimeFunction().run {
+                calculationTime(this.dateTimeToMillSec(item.createdAt))
+            }
+
             // viewComment_click
             binding.tvContentHomeFeedCommentShow.setOnClickListener {
                 val intent = Intent(context, CommentActivity::class.java)
                 intent.putExtra("postId", item.postId)
+                intent.putExtra("profileName", item.profileName)
+                intent.putExtra("profilePicture", item.profilePicture)
+                intent.putExtra("createdAt", item.createdAt)
+                intent.putExtra("content", item.content)
                 context.startActivity(intent)
             }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =

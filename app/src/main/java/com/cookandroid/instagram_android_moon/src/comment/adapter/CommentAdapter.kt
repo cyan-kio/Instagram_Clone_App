@@ -11,6 +11,7 @@ import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerCommentBin
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeStoryBinding
 import com.cookandroid.instagram_android_moon.src.comment.model.ResultComments
 import com.cookandroid.instagram_android_moon.src.main.home.model.ResultHomeFeeds
+import com.cookandroid.instagram_android_moon.util.ElapsedTimeFunction
 
 class CommentAdapter(val context: Context, private val resultComments: MutableList<ResultComments> ) : RecyclerView.Adapter<CommentAdapter.ViewHolder>(){
 
@@ -20,7 +21,9 @@ class CommentAdapter(val context: Context, private val resultComments: MutableLi
             binding.apply{
                 tvCommentCommentUserName.text = item.profileName
                 tvCommentCommentContent.text = item.comment
-                tvCommentCommentPostDate.text = item.updatedAt
+                tvCommentCommentPostDate.text = ElapsedTimeFunction().run {
+                    calculationTime(this.dateTimeToMillSec(item.createdAt))
+                }
                 tvCommentCommentLikeCount.text = item.likeCount.toString()
                 if(item.likeCount == 0) tvCommentCommentLikeCount.visibility = View.INVISIBLE
                 if(item.likeOn == 1) ckbxCommentCommentLike.isChecked = true

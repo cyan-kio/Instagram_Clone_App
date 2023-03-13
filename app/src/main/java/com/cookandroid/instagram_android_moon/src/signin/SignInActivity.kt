@@ -3,7 +3,9 @@ package com.cookandroid.instagram_android_moon.src.signin
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
+import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.ApplicationClass.Companion.LOGIN_USER_ID
 import com.cookandroid.instagram_android_moon.config.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.cookandroid.instagram_android_moon.config.ApplicationClass.Companion.sSharedPreferences
@@ -17,6 +19,9 @@ import com.cookandroid.instagram_android_moon.src.signup.SignUpActivity
 class SignInActivity : BaseActivity<ActivitySignInBinding>(ActivitySignInBinding::inflate), SignInActivityInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding.edtSignInUserId.setText(R.string.auto_id)
+        binding.tiedtSignInPassword.setText(R.string.auto_password)
 
         // Sign In
         binding.btnSignInSignIn.setOnClickListener {

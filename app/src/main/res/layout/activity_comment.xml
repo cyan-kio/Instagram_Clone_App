@@ -86,7 +86,7 @@
                     android:layout_height="34dp"
                     android:layout_marginVertical="10dp"
                     android:layout_marginHorizontal="5dp"
-                    android:src="@drawable/shape_profile_img_round_background"
+                    android:background="@drawable/shape_profile_img_round_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -121,6 +121,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/tv_comment_posting_post_date"
                     android:text="@string/edited"
                     android:textSize="12sp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toEndOf="@id/tv_comment_posting_post_date"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
