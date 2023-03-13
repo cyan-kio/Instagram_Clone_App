@@ -1,8 +1,8 @@
-package com.cookandroid.instagram_android_moon.src.main.profile.profilepager
+package com.cookandroid.instagram_android_moon.src.main.profile.pager.feeds
 
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ProfileFeedsResponse
 
-interface ProfilePagerFragmentInterface {
+interface ProfileFeedsFragmentInterface {
 
     fun onGetProfileFeedsSuccess(response: ProfileFeedsResponse)
 

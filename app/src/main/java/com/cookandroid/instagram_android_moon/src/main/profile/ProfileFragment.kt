@@ -15,15 +15,20 @@ import com.cookandroid.instagram_android_moon.databinding.FragmentProfileBinding
 import com.cookandroid.instagram_android_moon.src.main.profile.adapter.ProfilePagerAdapter
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ProfileResponse
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ResultProfile
-import com.cookandroid.instagram_android_moon.src.main.profile.profilepager.ProfilePagerFragment
+import com.cookandroid.instagram_android_moon.src.main.profile.pager.feeds.ProfileFeedsFragment
+import com.cookandroid.instagram_android_moon.src.main.profile.pager.tagged.ProfileTaggedFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile), ProfileFragmentInterface {
-
+    private lateinit var profileFeedsFragment : ProfileFeedsFragment
+    private lateinit var profileTaggedFragment : ProfileTaggedFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Path_Argument
+        // fragments Init
+        fragmentInitInProfile()
+
+        // path_Argument
         val userId: String? = ApplicationClass.sSharedPreferences.getString(LOGIN_USER_ID, null)
         if(userId != null) {
             ProfileService(this).tryGetProfile(user_id = userId.toInt())
@@ -31,25 +36,27 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         else Log.d("GetProfileError", "user_id is null")
 
 
+        // viewPager2
+        val pagerAdapter = ProfilePagerAdapter(requireActivity()).apply{
+            addFragment(profileFeedsFragment)
+            addFragment(profileTaggedFragment)
+        }
+        binding.viewpagerProfile.apply{
+            adapter = pagerAdapter
+            binding.viewpagerProfile.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    Log.e("ViewPagerFragment", "Page ${position+1}")
+                }
+            })
+        }
 
-        // ViewPager2
-        val pagerAdapter = ProfilePagerAdapter(requireActivity())
-        pagerAdapter.addFragment(ProfilePagerFragment(1))
-        pagerAdapter.addFragment(ProfilePagerFragment(2))
-        binding.viewpagerProfile.adapter = pagerAdapter
-        binding.viewpagerProfile.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                Log.e("ViewPagerFragment", "Page ${position+1}")
-            }
-        })
-
-        // TabLayout
+        // tabLayout
         TabLayoutMediator(binding.tabsProfile, binding.viewpagerProfile) { tab, position ->
             tab.customView = getTabView(position)
         }.attach()
 
-        // 이미지 둥글게
+        // image_Round_Setting
         binding.ivProfileTopImage.clipToOutline = true
 
     }
@@ -66,7 +73,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         }
     }
 
-    fun getTabView(position: Int): View {
+    // fragment_Init
+    private fun fragmentInitInProfile() {
+        profileFeedsFragment = ProfileFeedsFragment()
+        profileTaggedFragment = ProfileTaggedFragment()
+    }
+
+    // tab_Item_Setting
+    private fun getTabView(position: Int): View {
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.item_tab_profile, null, false)
         val iv_Icon = view.findViewById<ImageView>(R.id.iv_tab_item_profile)
 
@@ -77,8 +91,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         return view
     }
 
-    private fun profileInit(resultProfile: ResultProfile) {
-        // profile_binding
+    // profile_Binding
+    private fun profileBinding(resultProfile: ResultProfile) {
         Glide.with(this).load(resultProfile.profile_image_url).into(binding.ivProfileTopImage)
         binding.apply {
             tvToolbarProfileUsername.text = resultProfile.nickname
@@ -90,10 +104,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         }
     }
 
-
     override fun onGetProfileSuccess(response: ProfileResponse) {
         val resultProfile = response.result
-        profileInit(resultProfile)
+        profileBinding(resultProfile)
         response.message?.let { showCustomToast(it) }
     }
 

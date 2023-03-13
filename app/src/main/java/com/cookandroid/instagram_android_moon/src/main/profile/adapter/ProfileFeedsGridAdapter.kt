@@ -8,11 +8,11 @@ import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerProfileFeedsGridBinding
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ResultProfileFeeds
 
-class ProfileFeedsGridAdapter(val context: Context, val resultProfileFeeds: MutableList<ResultProfileFeeds>) : RecyclerView.Adapter<ProfileFeedsGridAdapter.ViewHolder>(){
+class ProfileFeedsGridAdapter(val context: Context, private val resultProfileFeeds: MutableList<ResultProfileFeeds>) : RecyclerView.Adapter<ProfileFeedsGridAdapter.ViewHolder>(){
 
     inner class ViewHolder(val binding: ItemRecyclerProfileFeedsGridBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResultProfileFeeds) {
-            Glide.with(context).load(item.photos[0].photoUrl).into(binding.ivItemProfileFeedsGrid)
+            Glide.with(binding.ivItemProfileFeedsGrid.context).load(item.photos[0].photoUrl).into(binding.ivItemProfileFeedsGrid)
         }
     }
 
