@@ -54,6 +54,9 @@
     <string name="comment">댓글</string>
     <string name="comment_post">게시</string>
 
+    <!-- follows -->
+    <string name="search">검색</string>
+
 
     <!-- sign_in -->
     <string name="hint_id_sign_in">사용자 이름, 이메일 주소 또는 휴대폰 번호</string>

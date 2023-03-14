@@ -44,6 +44,12 @@
     <color name="tv_related_user">#FF5A5A5A</color>
     <color name="btn_follow">#FF4293ef</color>
 
+    <!-- follows -->
+    <color name="search_bar">#FFefefef</color>
+    <color name="search_hint">#6C6C6C</color>
+    <color name="follower_name">#8A8A8A</color>
+
     <color name="background_add_profile_image">#FFf5fbf7</color>
     <color name="background_welcome">#FFf6f9fe</color>
+
 </resources>
