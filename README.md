@@ -41,3 +41,7 @@
 + Home_Feeds_api 연동
 + Profile_Feeds_api 연동
 + Profile_api 연동
+
+## 2023-03-13 진행상황
++ Comment_api 연동
++ View 수정
