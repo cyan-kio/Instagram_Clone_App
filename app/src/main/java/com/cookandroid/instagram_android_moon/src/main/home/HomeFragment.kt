@@ -2,7 +2,9 @@ package com.cookandroid.instagram_android_moon.src.main.home
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.BaseFragment
@@ -14,6 +16,7 @@ import com.cookandroid.instagram_android_moon.src.main.home.model.HomeStoriesRes
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home), HomeFragmentInterface {
     private lateinit var feedAdapter : FeedAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

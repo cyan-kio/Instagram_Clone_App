@@ -48,7 +48,7 @@ class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList
             binding.tvContentHomeFeedLike.text = "좋아요 " + item.likeCount +"개"
 
             // likeOn
-            binding.btnMidHomeFeedLike.isChecked = item.likeOn == 1
+            binding.btnMidHomeFeedLike.isChecked = item.likeOn.on == 1
 
             // createdAt
             binding.tvHomeFeedPostDate.text = ElapsedTimeFunction().run {

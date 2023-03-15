@@ -26,7 +26,7 @@ class CommentAdapter(val context: Context, private val resultComments: MutableLi
                 }
                 tvCommentCommentLikeCount.text = item.likeCount.toString()
                 if(item.likeCount == 0) tvCommentCommentLikeCount.visibility = View.INVISIBLE
-                if(item.likeOn == 1) ckbxCommentCommentLike.isChecked = true
+                if(item.likeOn.on == 1) ckbxCommentCommentLike.isChecked = true
                 ivCommentCommentProfileImage.clipToOutline = true
             }
         }

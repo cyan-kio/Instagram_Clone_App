@@ -20,5 +20,4 @@ data class ResultProfile(
     @SerializedName("account_status") val account_status: Boolean,
     @SerializedName("created_at") val created_at: String,
     @SerializedName("updated_at") val updated_at: String
-
 )

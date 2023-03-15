@@ -14,7 +14,14 @@ data class ResultHomeFeeds (
     @SerializedName("likeCount") val likeCount: Int,
     @SerializedName("profileName") val profileName: String,
     @SerializedName("profilePicture") val profilePicture: String,
-    @SerializedName("scrapOn") val scrapOn: Int,
+    @SerializedName("scrapOn") val scrapOn: ScrapAndLikeOn,
     @SerializedName("tagWord") val tagWord: MutableList<String>,
-    @SerializedName("likeOn") val likeOn: Int
+    @SerializedName("likeOn") val likeOn: ScrapAndLikeOn,
+    @SerializedName("userStoryOn") val userStoryOn: Int,
+    @SerializedName("userFollowOn") val userFollowOn: Int
+)
+
+data class ScrapAndLikeOn (
+    @SerializedName("id") val id: Int,
+    @SerializedName("on") val on: Int
 )

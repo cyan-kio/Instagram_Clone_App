@@ -15,5 +15,10 @@ data class ResultComments(
     @SerializedName("updatedAt") val updatedAt: String,
     @SerializedName("bigCommentCount") val bigCommentCount: Int,
     @SerializedName("likeCount") val likeCount: Int,
-    @SerializedName("likeOn") val likeOn: Int
+    @SerializedName("likeOn") val likeOn: ScrapAndLikeOn
+)
+
+data class ScrapAndLikeOn (
+    @SerializedName("id") val id: Int,
+    @SerializedName("on") val on: Int
 )
