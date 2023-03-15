@@ -16,7 +16,14 @@ class ImagePickerAdapter(
     private val parentViewModel: ImagePickerViewModel
 ) : ListAdapter<ImageItem, RecyclerView.ViewHolder>(ImageDiffCallback()) {
 
-
+    inner class ViewHolder(val binding: ItemRecyclerNewPostGridBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(imageItem: ImageItem) {
+            Glide.with(context).load(imageItem.uri).into(binding.ivItemNewPostImage)
+            binding.root.setOnClickListener {
+                binding.ckbxItemNewPostCheckbox.isChecked = true
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = ItemRecyclerNewPostGridBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -39,11 +46,7 @@ class ImagePickerAdapter(
         }
     }
 
-    inner class ViewHolder(val binding: ItemRecyclerNewPostGridBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(imageItem: ImageItem) {
-            Glide.with(context).load(imageItem.uri).into(binding.ivItemNewPostImage)
-        }
-    }
+
 }
 private class ImageDiffCallback: DiffUtil.ItemCallback<ImageItem>() {
     override fun areItemsTheSame(oldItem: ImageItem, newItem: ImageItem): Boolean {

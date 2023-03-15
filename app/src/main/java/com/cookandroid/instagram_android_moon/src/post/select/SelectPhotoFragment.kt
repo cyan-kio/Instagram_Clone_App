@@ -1,4 +1,4 @@
-package com.cookandroid.instagram_android_moon.src.post.selectphoto
+package com.cookandroid.instagram_android_moon.src.post.select
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -14,21 +13,18 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.BaseFragment
-import com.cookandroid.instagram_android_moon.databinding.FragmentReelsBinding
-import com.cookandroid.instagram_android_moon.databinding.FragmentSelectBinding
+import com.cookandroid.instagram_android_moon.databinding.FragmentSelectPhotoBinding
 import com.cookandroid.instagram_android_moon.src.post.PostActivity
 import com.cookandroid.instagram_android_moon.src.post.adapter.ImagePickerAdapter
 import com.cookandroid.instagram_android_moon.src.post.model.ImagePickerViewModel
+import com.cookandroid.instagram_android_moon.src.post.posting.PostingFragment
 
-class SelectFragment : BaseFragment<FragmentSelectBinding>(FragmentSelectBinding::bind, R.layout.fragment_select) {
+class SelectPhotoFragment : BaseFragment<FragmentSelectPhotoBinding>(FragmentSelectPhotoBinding::bind, R.layout.fragment_select_photo) {
     private val viewModel: ImagePickerViewModel by viewModels()
     private val MY_READ_PERMISSTION_CODE = 101
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
+    private lateinit var postingFragment :PostingFragment
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         if(ContextCompat.checkSelfPermission(requireContext(),
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) != PackageManager.PERMISSION_GRANTED
@@ -38,6 +34,8 @@ class SelectFragment : BaseFragment<FragmentSelectBinding>(FragmentSelectBinding
             loadImages()
         }
 
+        postingFragment = PostingFragment()
+
         binding.btnToolbarNewPostTopComplete.setOnClickListener {
             activity?.supportFragmentManager?.apply{
                 setFragmentResult(
@@ -45,17 +43,14 @@ class SelectFragment : BaseFragment<FragmentSelectBinding>(FragmentSelectBinding
                     bundleOf("uriList" to viewModel.getCheckedImageUriList())
                 )
                 beginTransaction()
-                    .replace(R.id.container_post, PostActivity().postingFragment)
+                    .replace(R.id.container_post, postingFragment)
                     .addToBackStack(null)
                     .commit()
+                viewModel.imageItemList.value!!.clear()
             }
         }
 
-
-        return super.onCreateView(inflater, container, savedInstanceState)
     }
-
-
 
     private fun loadImages() {
         val adapter = ImagePickerAdapter(requireContext(), viewModel)

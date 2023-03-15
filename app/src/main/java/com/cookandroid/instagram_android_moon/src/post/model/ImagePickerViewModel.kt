@@ -16,7 +16,6 @@ private const val INDEX_DATE_ADDED = MediaStore.MediaColumns.DATE_ADDED
 
 class ImagePickerViewModel: ViewModel() {
     val imageItemList = MutableLiveData<MutableList<ImageItem>>(mutableListOf())
-
     @SuppressLint("Range")
     fun fetchImageItemList(context: Context) {
         val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI

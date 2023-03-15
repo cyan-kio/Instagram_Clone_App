@@ -18,12 +18,14 @@
 
     <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/ckbx_item_new_post_checkbox"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="13dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:button="@android:color/transparent"
         android:background="@drawable/shape_select_photo_circle_background"
         android:gravity="center"
+        android:text="0"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/iv_item_new_post_image"
         app:layout_constraintTop_toTopOf="parent" />
