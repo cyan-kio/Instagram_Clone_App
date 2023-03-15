@@ -50,3 +50,8 @@
 + Home_story api 연동
 + Follower, Following api 연동
 + Feeds 경과시간 수정
+
+## 2023-03-15 진행상황
++ 이미지 선택 화면
++ 게시물 작성 화면
++ 새 게시물 생성 api 연동
