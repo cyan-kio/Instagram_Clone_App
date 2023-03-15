@@ -50,6 +50,10 @@
     <!-- 사람 찾아보기 안내 -->
     <string name="new_sign_up">Instagram 신규 가입</string>
 
+    <!-- new post -->
+    <string name="new_post">새 게시물</string>
+    <string name="gallery">갤러리</string>
+
     <!-- comment -->
     <string name="comment">댓글</string>
     <string name="comment_post">게시</string>

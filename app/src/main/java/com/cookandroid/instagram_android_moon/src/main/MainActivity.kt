@@ -1,20 +1,20 @@
 package com.cookandroid.instagram_android_moon.src.main
 
 
+import android.content.Intent
 import android.os.Bundle
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.BaseActivity
 import com.cookandroid.instagram_android_moon.databinding.ActivityMainBinding
 import com.cookandroid.instagram_android_moon.src.main.explore.ExploreFragment
 import com.cookandroid.instagram_android_moon.src.main.home.HomeFragment
-import com.cookandroid.instagram_android_moon.src.main.post.PostFragment
 import com.cookandroid.instagram_android_moon.src.main.profile.ProfileFragment
 import com.cookandroid.instagram_android_moon.src.main.reels.ReelsFragment
+import com.cookandroid.instagram_android_moon.src.post.PostActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private lateinit var homeFragment: HomeFragment
     private lateinit var exploreFragment: ExploreFragment
-    private lateinit var postFragment: PostFragment
     private lateinit var reelsFragment: ReelsFragment
     private lateinit var profileFragment: ProfileFragment
 
@@ -38,7 +38,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private fun fragmentInitInMain() {
         homeFragment = HomeFragment()
         exploreFragment = ExploreFragment()
-        postFragment = PostFragment()
         reelsFragment = ReelsFragment()
         profileFragment = ProfileFragment()
     }
@@ -55,7 +54,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     return@setOnItemSelectedListener true
                 }
                 R.id.item_post -> {
-                    changeFragment(R.id.container_main, postFragment)
+                    startActivity(Intent(this@MainActivity, PostActivity::class.java))
                     return@setOnItemSelectedListener true
                 }
                 R.id.item_reels -> {
