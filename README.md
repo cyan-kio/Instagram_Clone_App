@@ -45,3 +45,8 @@
 ## 2023-03-13 진행상황
 + Comment_api 연동
 + View 수정
+
+## 2023-03-14 진행상황
++ Home_story api 연동
++ Follower, Following api 연동
++ Feeds 경과시간 수정
