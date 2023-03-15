@@ -3,9 +3,7 @@ package com.cookandroid.instagram_android_moon.src.post.select
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -14,9 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.BaseFragment
 import com.cookandroid.instagram_android_moon.databinding.FragmentSelectPhotoBinding
-import com.cookandroid.instagram_android_moon.src.post.PostActivity
 import com.cookandroid.instagram_android_moon.src.post.adapter.ImagePickerAdapter
-import com.cookandroid.instagram_android_moon.src.post.model.ImagePickerViewModel
+import com.cookandroid.instagram_android_moon.src.post.model.image.ImagePickerViewModel
 import com.cookandroid.instagram_android_moon.src.post.posting.PostingFragment
 
 class SelectPhotoFragment : BaseFragment<FragmentSelectPhotoBinding>(FragmentSelectPhotoBinding::bind, R.layout.fragment_select_photo) {

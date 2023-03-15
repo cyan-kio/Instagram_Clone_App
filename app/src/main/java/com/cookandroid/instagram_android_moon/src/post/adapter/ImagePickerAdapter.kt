@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerNewPostGridBinding
-import com.cookandroid.instagram_android_moon.src.post.model.ImageItem
-import com.cookandroid.instagram_android_moon.src.post.model.ImagePickerViewModel
+import com.cookandroid.instagram_android_moon.src.post.model.image.ImageItem
+import com.cookandroid.instagram_android_moon.src.post.model.image.ImagePickerViewModel
 
 class ImagePickerAdapter(
     val context: Context,
@@ -20,7 +20,7 @@ class ImagePickerAdapter(
         fun bind(imageItem: ImageItem) {
             Glide.with(context).load(imageItem.uri).into(binding.ivItemNewPostImage)
             binding.root.setOnClickListener {
-                binding.ckbxItemNewPostCheckbox.isChecked = true
+                binding.ckbxItemNewPostCheckbox.isChecked = !binding.ckbxItemNewPostCheckbox.isChecked
             }
         }
     }
