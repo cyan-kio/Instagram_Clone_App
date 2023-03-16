@@ -12,8 +12,6 @@ import com.cookandroid.instagram_android_moon.config.ApplicationClass
 import com.cookandroid.instagram_android_moon.config.ApplicationClass.Companion.LOGIN_USER_ID
 import com.cookandroid.instagram_android_moon.config.BaseFragment
 import com.cookandroid.instagram_android_moon.databinding.FragmentProfileBinding
-import com.cookandroid.instagram_android_moon.src.main.MainActivity
-import com.cookandroid.instagram_android_moon.src.main.follows.FollowsFragment
 import com.cookandroid.instagram_android_moon.src.main.profile.adapter.ProfilePagerAdapter
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ProfileResponse
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ResultProfile
@@ -26,7 +24,7 @@ class ProfileFragment :
     ProfileFragmentInterface {
     private lateinit var profileFeedsFragment: ProfileFeedsFragment
     private lateinit var profileTaggedFragment: ProfileTaggedFragment
-    private lateinit var followsFragment: FollowsFragment
+    private lateinit var followsFragment: com.cookandroid.instagram_android_moon.src.main.profile.follows.FollowsFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -81,7 +79,8 @@ class ProfileFragment :
     private fun fragmentInitInProfile() {
         profileFeedsFragment = ProfileFeedsFragment()
         profileTaggedFragment = ProfileTaggedFragment()
-        followsFragment = FollowsFragment()
+        followsFragment =
+            com.cookandroid.instagram_android_moon.src.main.profile.follows.FollowsFragment()
     }
 
     // tab_Item_Setting

@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.BaseActivity
 import com.cookandroid.instagram_android_moon.databinding.ActivityMainBinding
-import com.cookandroid.instagram_android_moon.src.main.explore.ExploreFragment
+import com.cookandroid.instagram_android_moon.src.main.recommended.RecommendedFragment
 import com.cookandroid.instagram_android_moon.src.main.home.HomeFragment
 import com.cookandroid.instagram_android_moon.src.main.profile.ProfileFragment
 import com.cookandroid.instagram_android_moon.src.main.reels.ReelsFragment
@@ -14,7 +14,7 @@ import com.cookandroid.instagram_android_moon.src.post.PostActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private lateinit var homeFragment: HomeFragment
-    private lateinit var exploreFragment: ExploreFragment
+    private lateinit var exploreFragment: RecommendedFragment
     private lateinit var reelsFragment: ReelsFragment
     private lateinit var profileFragment: ProfileFragment
 
@@ -37,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     private fun fragmentInitInMain() {
         homeFragment = HomeFragment()
-        exploreFragment = ExploreFragment()
+        exploreFragment = RecommendedFragment()
         reelsFragment = ReelsFragment()
         profileFragment = ProfileFragment()
     }
