@@ -30,23 +30,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_sign_in_language" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_sign_in_userId"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_sign_in_id"
+        style="@style/textInputLayoutStyle"
+        android:theme="@style/textInputLayoutStyle"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="90dp"
-        android:background="@drawable/shape_edt_sign_in_background"
-        android:hint="@string/hint_id_sign_in"
-        android:paddingHorizontal="14dp"
-        android:textSize="17sp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeWidth="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_sign_in_logo" />
+        app:layout_constraintTop_toBottomOf="@id/iv_sign_in_logo">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tiedt_sign_in_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_edt_sign_in_background"
+        android:hint="@string/hint_id_sign_in"
+        android:textSize="17sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_sign_in_password"
         style="@style/textInputLayoutStyle"
-        android:theme="@style/textInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -54,7 +63,7 @@
         app:boxStrokeWidth="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_sign_in_userId"
+        app:layout_constraintTop_toBottomOf="@id/til_sign_in_id"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -83,7 +92,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_sign_in_userId" />
+        app:layout_constraintTop_toBottomOf="@id/til_sign_in_id" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_sign_in_sign_in"

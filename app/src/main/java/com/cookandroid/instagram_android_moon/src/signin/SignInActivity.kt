@@ -20,12 +20,12 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(ActivitySignInBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.edtSignInUserId.setText(R.string.auto_id)
+        binding.tiedtSignInId.setText(R.string.auto_id)
         binding.tiedtSignInPassword.setText(R.string.auto_password)
 
         // Sign In
         binding.btnSignInSignIn.setOnClickListener {
-            val id = binding.edtSignInUserId.text.toString()
+            val id = binding.tiedtSignInId.text.toString()
             val password = binding.tiedtSignInPassword.text.toString()
             Log.d("LOGIN_TEST", "id: $id, password: $password")
             val postRequest = PostSignInRequest(id = id, password = password)
@@ -35,6 +35,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(ActivitySignInBinding
         // Sign Up
         binding.btnSignInSignUp.setOnClickListener {
             startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
+            overridePendingTransition(R.anim.none, R.anim.horizon_exit)
         }
     }
 
@@ -49,6 +50,6 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(ActivitySignInBinding
 
     override fun onPostSignInFailure(message: String) {
         showCustomToast("오류 : $message")
-            Log.d("SignInError", "$message")
+        Log.d("SignInError", "$message")
     }
 }

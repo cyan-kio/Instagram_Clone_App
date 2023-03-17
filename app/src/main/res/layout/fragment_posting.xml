@@ -83,7 +83,8 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical"
-            android:text="@string/content"
+            android:textSize="14sp"
+            android:hint="문구 입력..."
             android:textColor="@color/black"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -105,7 +106,7 @@
             android:text="사람 태그하기"
             android:textColor="@color/black"
             android:layout_margin="13dp"
-            android:textSize="17sp"/>
+            android:textSize="16sp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -125,8 +126,9 @@
             android:layout_height="wrap_content"
             android:text="위치 추가"
             android:textColor="@color/black"
-            android:layout_margin="13dp"
-            android:textSize="17sp"/>
+            android:layout_marginHorizontal="13dp"
+            android:layout_marginVertical="15dp"
+            android:textSize="16sp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -137,14 +139,110 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:orientation="horizontal"
-        android:paddingStart="15dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_posting_add_place"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginVertical="8dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="경기도 안양시 동안구"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="경기도 안양시"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="범계역"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="신나는 서울랜드"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="은하수마을"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="8dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="25dp"
+                        android:background="@drawable/shape_edt_follows_search_background"
+                        android:text=" 검색 "
+                        android:textColor="@color/black"
+                        android:textSize="11sp"
+                        android:gravity="center"
+                        android:layout_marginStart="10dp"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/img_search_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="22dp"/>
+
+                </FrameLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </HorizontalScrollView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -164,8 +262,9 @@
             android:layout_height="wrap_content"
             android:text="음악 추가"
             android:textColor="@color/black"
-            android:layout_margin="13dp"
-            android:textSize="17sp"/>
+            android:layout_marginHorizontal="13dp"
+            android:layout_marginVertical="15dp"
+            android:textSize="16sp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -176,14 +275,80 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:orientation="horizontal"
-        android:paddingStart="15dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_posting_add_music"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginVertical="8dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="죠지(GEORGE) · 좋아해..(바른연애 길잡이 X 죠지)"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="멜로망스 · 사랑인가봐"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="INDRAGERSN · Its A Wrap - Sped Up"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="비투비 · Friend"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/shape_edt_follows_search_background"
+                    android:text="자이언트핑크 · 너를 사랑하진 않아 (feat. 케이시)"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </HorizontalScrollView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -207,7 +372,7 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="17sp"/>
+            android:textSize="16sp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -228,7 +393,7 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="17sp"/>
+            android:textSize="16sp"/>
 
         <Switch
             android:layout_width="50dp"
@@ -254,7 +419,7 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="17sp"/>
+            android:textSize="16sp"/>
 
         <Switch
             android:layout_width="50dp"
@@ -280,7 +445,7 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="17sp"/>
+            android:textSize="16sp"/>
 
         <Switch
             android:layout_width="50dp"
@@ -291,6 +456,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_posting_option"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -306,7 +472,7 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="17sp"/>
+            android:textSize="16sp"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="15dp"

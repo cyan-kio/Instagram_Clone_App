@@ -1,6 +1,7 @@
 package com.cookandroid.instagram_android_moon.src.post.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -13,7 +14,8 @@ import com.cookandroid.instagram_android_moon.src.post.model.image.ImagePickerVi
 
 class ImagePickerAdapter(
     val context: Context,
-    private val parentViewModel: ImagePickerViewModel
+    private val parentViewModel: ImagePickerViewModel,
+    private val listener: PhotoSelectedListener
 ) : ListAdapter<ImageItem, RecyclerView.ViewHolder>(ImageDiffCallback()) {
 
     inner class ViewHolder(val binding: ItemRecyclerNewPostGridBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -21,6 +23,7 @@ class ImagePickerAdapter(
             Glide.with(context).load(imageItem.uri).into(binding.ivItemNewPostImage)
             binding.root.setOnClickListener {
                 binding.ckbxItemNewPostCheckbox.isChecked = !binding.ckbxItemNewPostCheckbox.isChecked
+                listener.onPhotoSelected(imageItem.uri)
             }
         }
     }
@@ -46,7 +49,9 @@ class ImagePickerAdapter(
         }
     }
 
-
+    interface PhotoSelectedListener {
+        fun onPhotoSelected (uri: Uri)
+    }
 }
 private class ImageDiffCallback: DiffUtil.ItemCallback<ImageItem>() {
     override fun areItemsTheSame(oldItem: ImageItem, newItem: ImageItem): Boolean {

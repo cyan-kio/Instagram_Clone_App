@@ -6,21 +6,28 @@ import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeFeedBinding
 import com.cookandroid.instagram_android_moon.src.comment.CommentActivity
+import com.cookandroid.instagram_android_moon.src.main.home.likePosting.LikePostingInterface
+import com.cookandroid.instagram_android_moon.src.main.home.likePosting.LikePostingService
+import com.cookandroid.instagram_android_moon.src.main.home.likePosting.model.LikePostingResponse
 import com.cookandroid.instagram_android_moon.src.main.home.model.ResultHomeFeeds
 import com.cookandroid.instagram_android_moon.util.ElapsedTimeFunction
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList<ResultHomeFeeds>) :
-    RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
+    RecyclerView.Adapter<FeedAdapter.ViewHolder>(), LikePostingInterface {
     inner class ViewHolder(val binding: ItemRecyclerHomeFeedBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResultHomeFeeds) {
@@ -46,9 +53,22 @@ class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList
 
             // likeCount
             binding.tvContentHomeFeedLike.text = "좋아요 " + item.likeCount +"개"
-
+            var like = item.likeCount
             // likeOn
             binding.btnMidHomeFeedLike.isChecked = item.likeOn.on == 1
+            binding.btnMidHomeFeedLike.setOnClickListener {
+                when((it as AppCompatCheckBox).isChecked) {
+                    true -> {
+                        like++
+                        LikePostingService(this@FeedAdapter).tryPostLikePosting(item.postId)
+                    }
+                    false -> {
+                        like--
+                        LikePostingService(this@FeedAdapter).tryPatchUnLikePosting(item.likeOn.id, item.likeOn.on)
+                    }
+                }
+                binding.tvContentHomeFeedLike.text = "좋아요 " + like +"개"
+            }
 
             // createdAt
             binding.tvHomeFeedPostDate.text = ElapsedTimeFunction().run {
@@ -81,5 +101,23 @@ class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList
 
     override fun getItemCount(): Int {
         return resultHomeFeeds.size
+    }
+
+    override fun onPostLikePostingSuccess(response: LikePostingResponse) {
+        response.message?.let { Toast.makeText(context, it, Toast.LENGTH_SHORT).show() }
+    }
+
+    override fun onPostLikePostingFailure(message: String) {
+        Toast.makeText(context, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("SignInError", message)
+    }
+
+    override fun onPatchUnLikePostingSuccess(response: LikePostingResponse) {
+        response.message?.let { Toast.makeText(context, it, Toast.LENGTH_SHORT).show() }
+    }
+
+    override fun onPatchUnLikePostingFailure(message: String) {
+        Toast.makeText(context, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("SignInError", message)
     }
 }

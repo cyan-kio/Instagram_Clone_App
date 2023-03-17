@@ -10,5 +10,5 @@ class SignUpViewModel : ViewModel() {
     var signin_state: Boolean = false
     var birth_date : String = ""
     var nickname : String = ""
-    var profile_image_url : String = ""
+    var profile_image_url : String? = null
 }

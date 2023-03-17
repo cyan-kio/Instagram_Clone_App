@@ -2,6 +2,7 @@ package com.cookandroid.instagram_android_moon.src.post.select
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat
@@ -9,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.BaseFragment
 import com.cookandroid.instagram_android_moon.databinding.FragmentSelectPhotoBinding
@@ -18,6 +20,7 @@ import com.cookandroid.instagram_android_moon.src.post.posting.PostingFragment
 
 class SelectPhotoFragment : BaseFragment<FragmentSelectPhotoBinding>(FragmentSelectPhotoBinding::bind, R.layout.fragment_select_photo) {
     private val viewModel: ImagePickerViewModel by viewModels()
+
     private val MY_READ_PERMISSTION_CODE = 101
     private lateinit var postingFragment :PostingFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +53,11 @@ class SelectPhotoFragment : BaseFragment<FragmentSelectPhotoBinding>(FragmentSel
     }
 
     private fun loadImages() {
-        val adapter = ImagePickerAdapter(requireContext(), viewModel)
+        val adapter = ImagePickerAdapter(requireContext(), viewModel, object : ImagePickerAdapter.PhotoSelectedListener {
+            override fun onPhotoSelected(uri: Uri) {
+                Glide.with(this@SelectPhotoFragment).load(uri).into(binding.ivNewPostPhotoSelected)
+            }
+        })
         binding.recyclerNewPost.apply {
             layoutManager= GridLayoutManager(requireContext(), 4)
             this.adapter = adapter
@@ -64,8 +71,6 @@ class SelectPhotoFragment : BaseFragment<FragmentSelectPhotoBinding>(FragmentSel
             adapter.submitList(imageItemList)
         }
     }
-
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

@@ -21,7 +21,7 @@ class GetPasswordFragment : BaseFragment<FragmentGetPasswordBinding>(
         // 비밀번호 입력
         binding.btnGetPasswordNext.setOnClickListener {
             signUpViewModel.apply {
-                password = binding.edtGetPassword.text.toString()
+                password = binding.tiedtSignUpPassword.text.toString()
             }
             signUpActivity.changeFragmentWithAddBackStack(R.id.fragment_container_sign_up, signUpActivity.saveSignInFragment)
         }

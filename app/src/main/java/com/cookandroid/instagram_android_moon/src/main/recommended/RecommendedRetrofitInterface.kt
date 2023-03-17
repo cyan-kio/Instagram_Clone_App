@@ -7,4 +7,7 @@ import retrofit2.http.GET
 interface RecommendedRetrofitInterface {
     @GET("app/posts/recommended")
     fun getRecommended(): Call<RecommendedResponse>
+
+    @GET("app/users?user-keyword=")
+    fun getUserResearch(): Call<RecommendedResponse>
 }

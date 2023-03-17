@@ -5,8 +5,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- auto login -->
-    <string name="auto_id">linirini22</string>
-    <string name="auto_password">instagram22</string>
+    <string name="auto_id">linirini</string>
+    <string name="auto_password">instagram</string>
 
     <!--menu item-->
     <string name="home">home</string>
@@ -100,14 +100,14 @@
     <string name="password">비밀번호</string>
     <!-- save_sign_in_info -->
     <string name="save_sign_in_info">로그인 정보를 저장하시겠어요?</string>
-    <string name="save_sign_in_info_guide">${name} 계정의 로그인 정보가 저장되므로 다음에 로그인할 때 로그인 정보를 다시 입력하지 않아도 됩니다.</string>
+    <string name="save_sign_in_info_guide"> 계정의 로그인 정보가 저장되므로 다음에 로그인할 때 로그인 정보를 다시 입력하지 않아도 됩니다.</string>
     <string name="save_now">저장</string>
     <string name="save_later">나중에 하기</string>
     <!-- birth_date -->
     <string name="birth_date_input">생년월일 입력</string>
     <string name="birth_date_input_guide">비즈니스, 반려동물 또는 기타 목적으로 이 계정을 만드는 경우에도 회원님의 실제 생년월일을 사용하세요. 이 생년월일 정보는 프로필에서 다른 사람에게 공개되지 않습니다. 왜 생년월일을 입력해야 하나요?</string>
     <string name="birth_date_hint">생일(0세)</string>
-    <string name="birth_date">2023년 3월 8일_${현재 날짜}</string>
+    <string name="birth_date">생년월일</string>
     <string name="birth_date_input_guide_dialog_title">생일</string>
     <string name="birth_date_input_guide_dialog_content">생년월일을 입력하면 회원님에게 제공되는 기능 및 광고가 개선되며 Instagram 커뮤니티를 안전하게 유지하는 데 도움이 됩니다. 입력한 생년월일 정보는 개인 정보 계정 설정에서 확인할 수 있습니다. 더 알아보기</string>
     <!-- user_name -->
@@ -132,7 +132,7 @@
     <string name="add_profile_image_choose_at_gallery">갤러리에서 선택</string>
     <string name="add_profile_image_take_a_picture">사진 찍기</string>
     <!-- welcome_instagram -->
-    <string name="welcome_instagram_with_user_name">${userName}님, Instagram에 오신 것을 환영합니다</string>
+    <string name="welcome_instagram_with_user_name">님, Instagram에 오신 것을 환영합니다</string>
     <string name="welcome_instagram_guide">이제 몇 가지 단계를 통해 이용 환경을 원하는 대로\n설정해보세요</string>
     <!-- agreement_to_use_Instagram -->
     <string name="agreement_to_use_Instagram">Instagram 앱을 사용하려면 다음 항목에 동의해야 합니다</string>
@@ -162,4 +162,9 @@
     <string name="discover_friends_with_contact_guide_sync">연락처가 정기적으로 동기화되고 서버에 안전하게 저장됩니다.\n설정에서 언제든지 동기화를 해제할 수 있습니다. 더 알아보기.</string>
     <string name="sync">동기화</string>
 
+    <!-- posting_option -->
+    <string name="hide_like_guide">이 게시물의 총 좋아요 및 조회수는 회원님만 볼 수 있습니다. 나중에\n게시물 상단에 있는 ⠇메뉴에서 이 설정을 변경할 수 있습니다. 다른 사람의\n게시물에서 좋아요 수를 숨기려면 계정 설정으로 이동하세요. 더 알아보기</string>
+    <string name="hide_comment_function">나중에 게시물 상단의 메뉴(⠇)에서 이 설정을 변경할 수 있습니다.</string>
+    <string name="share_to_facebook">사진과 동영상 게시물이 Facebook에 자동으로 공유됩니다.</string>
+    <string name="input_replace_text">대체 텍스트는 시각적으로 사진을 보기 어려운 사람들에게 사진 내용을 설명하는 텍스트입니다. 대체 텍스트는 회원님의 사진에 대해 자동으로 생성되며, 직접 입력할 수도 있습니다.</string>
 </resources>

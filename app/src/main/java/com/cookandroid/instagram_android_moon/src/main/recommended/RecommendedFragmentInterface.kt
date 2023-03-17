@@ -7,4 +7,6 @@ interface RecommendedFragmentInterface {
     fun onGetRecommendedSuccess(response: RecommendedResponse)
 
     fun onGetRecommendedFailure(message: String)
+
+
 }

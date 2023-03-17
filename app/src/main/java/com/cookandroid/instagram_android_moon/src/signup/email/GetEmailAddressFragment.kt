@@ -26,7 +26,7 @@ class GetEmailAddressFragment : BaseFragment<FragmentGetEmailAddressBinding>(Fra
         binding.btnGetEmailAddressNext.setOnClickListener {
             signUpViewModel.apply {
                 signup_method = SIGNUP_FOR_EMAIL
-                verify_method = binding.edtGetEmailAddress.text.toString()
+                verify_method = binding.tiedtSignInEmail.text.toString()
             }
             signUpActivity.changeFragmentWithAddBackStack(R.id.fragment_container_sign_up, signUpActivity.getNameFragment)
         }

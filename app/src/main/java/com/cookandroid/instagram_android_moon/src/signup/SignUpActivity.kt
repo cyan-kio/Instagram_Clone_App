@@ -4,6 +4,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.ApplicationClass
 import com.cookandroid.instagram_android_moon.config.ApplicationClass.Companion.LOGIN_USER_ID
@@ -14,6 +16,7 @@ import com.cookandroid.instagram_android_moon.src.signup.birthdate.GetBirthDateF
 import com.cookandroid.instagram_android_moon.src.signup.certification.GetCertificationCodeFragment
 import com.cookandroid.instagram_android_moon.src.signup.email.GetEmailAddressFragment
 import com.cookandroid.instagram_android_moon.src.signup.model.SignUpResponse
+import com.cookandroid.instagram_android_moon.src.signup.model.SignUpViewModel
 import com.cookandroid.instagram_android_moon.src.signup.name.GetNameFragment
 import com.cookandroid.instagram_android_moon.src.signup.password.GetPasswordFragment
 import com.cookandroid.instagram_android_moon.src.signup.phone.GetPhoneNumberFragment
@@ -34,7 +37,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
     lateinit var saveSignInFragment: SaveSignInFragment
     lateinit var getAgreementOnTermsFragment: GetAgreementOnTermsFragment
     lateinit var getUserNameFragment: GetUserNameFragment
-
+    private val signUpViewModel: SignUpViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Fragment Init
@@ -50,6 +53,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         editor.apply()
         response.message?.let { showCustomToast(it) }
         val intent = Intent(this@SignUpActivity, WelcomeActivity::class.java)
+        intent.putExtra("USER_NAME", signUpViewModel.nickname)
         finishAffinity()
         startActivity(intent)
     }

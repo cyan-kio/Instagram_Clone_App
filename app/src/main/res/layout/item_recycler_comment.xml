@@ -94,4 +94,44 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const_comment_check_replies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/const_comment_posting"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="30dp"
+            android:layout_height="1dp"
+            android:background="#BFBFBF"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="58dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_comment_check_replies_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/add_reply"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@id/view1"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_comment_reply"
+        app:layout_constraintTop_toBottomOf="@id/const_comment_posting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,16 +18,12 @@ class FollowsFragment : BaseFragment<FragmentFollowsBinding>(FragmentFollowsBind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         fragmentInitInFollows()
 
         val followsAdapter = FollowsPagerAdapter(requireActivity()).apply{
             addFragment(followerFragment)
             addFragment(followingFragment)
         }
-
-
 
         binding.viewpagerFollows.apply{
             adapter = followsAdapter

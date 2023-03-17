@@ -21,7 +21,7 @@ class GetNameFragment : BaseFragment<FragmentGetNameBinding>(
         // 이름 입력
         binding.btnGetNameNext.setOnClickListener {
             signUpViewModel.apply {
-                name = binding.edtGetName.text.toString()
+                name = binding.tiedtSignInName.text.toString()
             }
             signUpActivity.changeFragmentWithAddBackStack(R.id.fragment_container_sign_up, signUpActivity.getPasswordFragment)
         }

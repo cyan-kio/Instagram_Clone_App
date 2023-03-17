@@ -27,7 +27,7 @@ class GetPhoneNumberFragment : BaseFragment<FragmentGetPhoneNumberBinding>(Fragm
         binding.btnGetPhoneNumberNext.setOnClickListener {
             signUpViewModel.apply {
                 signup_method = SIGNUP_FOR_PHONE
-                verify_method = binding.edtGetPhoneNumber.text.toString()
+                verify_method = binding.tiedtSignInPhone.text.toString()
             }
             signUpActivity.changeFragmentWithAddBackStack(R.id.fragment_container_sign_up, signUpActivity.getNameFragment)
         }

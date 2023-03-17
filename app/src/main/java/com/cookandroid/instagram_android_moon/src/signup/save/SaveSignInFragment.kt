@@ -18,6 +18,8 @@ class SaveSignInFragment : BaseFragment<FragmentSaveSignInBinding>(
 
         val signUpActivity = activity as SignUpActivity
 
+        binding.tvSaveSignInInfoGuide.text = signUpViewModel.name+" "+resources.getString(R.string.save_sign_in_info_guide)
+
         // 로그인 정보 저장
         binding.btnSaveSignInInfoNow.setOnClickListener {
             signUpViewModel.apply {

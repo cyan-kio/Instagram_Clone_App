@@ -82,9 +82,9 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_new_post_photo_selected"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="310dp"
                         android:src="@drawable/img_btn_discover_people_complete"
-                        android:adjustViewBounds="true"/>
+                        android:scaleType="centerCrop"/>
 
                 </FrameLayout>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
