@@ -1,4 +1,7 @@
 # instagram_android_moon
+노션 개발일지
+https://www.notion.so/softsquared/acaf6c9cd1994240a1d05cf7fa38e51a?pvs=4
+
 ## 2023-03-04 진행상황
 + template 적용 및 android studio 개발 환경 세팅
 + Splash 화면, 코드 작성
