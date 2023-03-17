@@ -47,16 +47,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
     }
 
     override fun onGetHomeFeedsSuccess(response: HomeFeedsResponse) {
-        binding.recyclerHomeFeed.apply {
-        adapter = FeedAdapter(context, response.result)
-        layoutManager =
-            LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        if(response.result != null) {
+            binding.recyclerHomeFeed.apply {
+                adapter = FeedAdapter(context, response.result)
+                layoutManager =
+                    LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+            }
         }
-        response.message?.let { showCustomToast(it) }
     }
 
     override fun onGetHomeFeedsFailure(message: String) {
-        showCustomToast("오류 : $message")
         Log.d("ProfileError", message)
     }
 
@@ -66,11 +66,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
             layoutManager =
                 LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         }
-        response.message?.let { showCustomToast(it) }
     }
 
     override fun onGetHomeStoriesFailure(message: String) {
-        showCustomToast("오류 : $message")
         Log.d("ProfileError", message)
     }
 }

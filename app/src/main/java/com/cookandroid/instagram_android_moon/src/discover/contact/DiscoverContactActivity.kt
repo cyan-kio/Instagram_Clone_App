@@ -11,7 +11,12 @@ class DiscoverContactActivity : BaseActivity<ActivityDiscoverContactBinding>(Act
         super.onCreate(savedInstanceState)
 
         binding.btnDiscoverDiscoverContactSkip.setOnClickListener {
-            startActivity(Intent(this@DiscoverContactActivity, MainActivity::class.java))
+            startActivity(Intent(this@DiscoverContactActivity, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+            })
+
+            finish()
         }
     }
 }

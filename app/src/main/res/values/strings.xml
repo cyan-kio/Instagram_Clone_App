@@ -4,9 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!-- auto login -->
-    <string name="auto_id">linirini</string>
-    <string name="auto_password">instagram</string>
+
 
     <!--menu item-->
     <string name="home">home</string>
