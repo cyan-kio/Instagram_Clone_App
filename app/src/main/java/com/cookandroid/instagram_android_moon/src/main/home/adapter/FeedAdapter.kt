@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.RecyclerView
@@ -20,11 +19,9 @@ import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeFeedBi
 import com.cookandroid.instagram_android_moon.src.comment.CommentActivity
 import com.cookandroid.instagram_android_moon.src.main.home.likePosting.LikePostingInterface
 import com.cookandroid.instagram_android_moon.src.main.home.likePosting.LikePostingService
-import com.cookandroid.instagram_android_moon.src.main.home.likePosting.model.LikePostingResponse
+import com.cookandroid.instagram_android_moon.src.main.home.likePosting.model.LikeCommentResponse
 import com.cookandroid.instagram_android_moon.src.main.home.model.ResultHomeFeeds
 import com.cookandroid.instagram_android_moon.util.ElapsedTimeFunction
-import java.text.SimpleDateFormat
-import java.util.Calendar
 
 class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList<ResultHomeFeeds>) :
     RecyclerView.Adapter<FeedAdapter.ViewHolder>(), LikePostingInterface {
@@ -103,7 +100,7 @@ class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList
         return resultHomeFeeds.size
     }
 
-    override fun onPostLikePostingSuccess(response: LikePostingResponse) {
+    override fun onPostLikePostingSuccess(response: LikeCommentResponse) {
         response.message?.let { Toast.makeText(context, it, Toast.LENGTH_SHORT).show() }
     }
 
@@ -112,7 +109,7 @@ class FeedAdapter(val context: Context, private val resultHomeFeeds: MutableList
         Log.d("SignInError", message)
     }
 
-    override fun onPatchUnLikePostingSuccess(response: LikePostingResponse) {
+    override fun onPatchUnLikePostingSuccess(response: LikeCommentResponse) {
         response.message?.let { Toast.makeText(context, it, Toast.LENGTH_SHORT).show() }
     }
 

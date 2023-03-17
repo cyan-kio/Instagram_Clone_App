@@ -6,18 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.databinding.ActivityCommentBinding
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerCommentBinding
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeStoryBinding
+import com.cookandroid.instagram_android_moon.src.comment.LikeComment.LikeCommentInterface
+import com.cookandroid.instagram_android_moon.src.comment.LikeComment.LikeCommentService
 import com.cookandroid.instagram_android_moon.src.comment.model.CommentsResponse
 import com.cookandroid.instagram_android_moon.src.comment.model.ResultComments
 import com.cookandroid.instagram_android_moon.src.comment.reply.ClickCallbackListener
 import com.cookandroid.instagram_android_moon.src.comment.reply.ReplyAdapterInterface
 import com.cookandroid.instagram_android_moon.src.comment.reply.ReplyService
 import com.cookandroid.instagram_android_moon.src.comment.reply.adapter.ReplyAdapter
+import com.cookandroid.instagram_android_moon.src.main.home.likePosting.LikePostingService
+import com.cookandroid.instagram_android_moon.src.main.home.likePosting.model.LikeCommentResponse
 import com.cookandroid.instagram_android_moon.src.main.home.model.ResultHomeFeeds
 import com.cookandroid.instagram_android_moon.util.ElapsedTimeFunction
 
@@ -25,7 +30,7 @@ class CommentAdapter(
     val context: Context,
     private val resultComments: MutableList<ResultComments>,
     private val listener: ReplyingClickListener
-) : RecyclerView.Adapter<CommentAdapter.ViewHolder>(), ReplyAdapterInterface {
+) : RecyclerView.Adapter<CommentAdapter.ViewHolder>(), ReplyAdapterInterface, LikeCommentInterface {
     private lateinit var view: ItemRecyclerCommentBinding
     private lateinit var _groupId: String
     inner class ViewHolder(val binding: ItemRecyclerCommentBinding) :
@@ -40,8 +45,23 @@ class CommentAdapter(
                     calculationTime(this.dateTimeToMillSec(item.createdAt))
                 }
                 tvCommentCommentLikeCount.text = item.likeCount.toString()
+                var like = item.likeCount
                 if (item.likeCount == 0) tvCommentCommentLikeCount.visibility = View.INVISIBLE
                 if (item.likeOn.on == 1) ckbxCommentCommentLike.isChecked = true
+                binding.ckbxCommentCommentLike.setOnClickListener {
+                    when((it as AppCompatCheckBox).isChecked) {
+                        true -> {
+                            like++
+                            LikeCommentService(this@CommentAdapter).tryPostLikeComment(item.commentId)
+                        }
+                        false -> {
+                            like--
+                            LikeCommentService(this@CommentAdapter).tryPatchUnLikeComment(item.likeOn.id, item.likeOn.on)
+                        }
+                    }
+                    binding.tvCommentCommentLikeCount.text = ""+like
+                }
+
                 ivCommentCommentProfileImage.clipToOutline = true
                 tvCommentCommentReply.setOnClickListener {
                     listener.onReplyingClick(item.commentId)
@@ -99,6 +119,24 @@ class CommentAdapter(
     }
 
     override fun onGetRepliesFailure(message: String) {
+        Toast.makeText(context, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("SignInError", message)
+    }
+
+    override fun onPostLikeCommentSuccess(response: LikeCommentResponse) {
+        response.message?.let { Toast.makeText(context, it, Toast.LENGTH_SHORT).show() }
+    }
+
+    override fun onPostLikeCommentFailure(message: String) {
+        Toast.makeText(context, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("SignInError", message)
+    }
+
+    override fun onPatchUnLikeCommentSuccess(response: LikeCommentResponse) {
+        response.message?.let { Toast.makeText(context, it, Toast.LENGTH_SHORT).show() }
+    }
+
+    override fun onPatchUnLikeCommentFailure(message: String) {
         Toast.makeText(context, "오류 : $message", Toast.LENGTH_SHORT).show()
         Log.d("SignInError", message)
     }
