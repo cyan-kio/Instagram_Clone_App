@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="4dp">
+
+    <FrameLayout
+        android:id="@+id/frame_item_search_user_profile_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_search_user_story_uncheck"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:background="@drawable/shape_story_view_status_uncheck"
+            android:visibility="invisible"
+            android:layout_gravity="center"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_search_user_profile_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_profile_img_round_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="@id/frame_item_search_user_profile_img"
+        app:layout_constraintStart_toEndOf="@id/frame_item_search_user_profile_img"
+        app:layout_constraintBottom_toBottomOf="@id/frame_item_search_user_profile_img"
+        android:layout_marginStart="15dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_search_user_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userName"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_search_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/follower_name"
+            android:textSize="13sp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_search_user_connected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/follower_name"
+            android:textSize="13sp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

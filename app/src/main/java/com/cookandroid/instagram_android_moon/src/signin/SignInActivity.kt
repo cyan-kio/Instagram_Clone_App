@@ -20,6 +20,8 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(ActivitySignInBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        binding.tiedtSignInId.setText(resources.getString(R.string.auto_id))
+        binding.tiedtSignInPassword.setText(resources.getString(R.string.auto_pw))
 
         // Sign In
         binding.btnSignInSignIn.setOnClickListener {
