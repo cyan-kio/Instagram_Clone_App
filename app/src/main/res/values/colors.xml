@@ -55,4 +55,6 @@
     <color name="background_add_profile_image">#FFf5fbf7</color>
     <color name="background_welcome">#FFf6f9fe</color>
 
+    <color name="scrap_save_collection">#FF4AB5DF</color>
+
 </resources>

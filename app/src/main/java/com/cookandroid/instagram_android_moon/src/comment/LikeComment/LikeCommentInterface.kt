@@ -8,7 +8,7 @@ interface LikeCommentInterface {
 
     fun onPostLikeCommentFailure(message: String)
 
-    fun onPatchUnLikeCommentSuccess(response: LikeCommentResponse)
+    fun onPatchEditLikeCommentSuccess(response: LikeCommentResponse)
 
-    fun onPatchUnLikeCommentFailure(message: String)
+    fun onPatchEditLikeCommentFailure(message: String)
 }

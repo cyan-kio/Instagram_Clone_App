@@ -75,6 +75,59 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const_scrap_bar_home_feed"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        app:layout_constraintBottom_toBottomOf="@id/viewPager_home_feed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#efefef"
+        android:visibility="gone"
+        android:paddingHorizontal="15dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_scrap_bar_home_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:cardCornerRadius="2dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_scrap_bar_home_feed_image"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장됨"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/cv_scrap_bar_home_feed"
+            app:layout_constraintTop_toTopOf="@id/cv_scrap_bar_home_feed"
+            app:layout_constraintBottom_toBottomOf="@id/cv_scrap_bar_home_feed"
+            android:layout_marginStart="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_scrap_bar_home_feed_save_collection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="컬렉션에 저장"
+            android:textColor="@color/scrap_save_collection"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cv_scrap_bar_home_feed"
+            app:layout_constraintBottom_toBottomOf="@id/cv_scrap_bar_home_feed"
+            android:layout_marginStart="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/const_mid_home_feed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -123,11 +176,12 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_gravity="bottom|center_vertical"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/btn_mid_home_feed_scrap"
-            android:layout_width="21dp"
+            android:layout_width="18dp"
             android:layout_height="21dp"
-            android:src="@drawable/img_home_feed_icon_scrap"
+            android:button="@android:color/transparent"
+            android:background="@drawable/selector_home_feed_icon_scrap"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

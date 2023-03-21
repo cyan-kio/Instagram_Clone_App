@@ -138,6 +138,7 @@
                                 android:background="@drawable/shape_profile_img_round_background"
                                 app:layout_constraintTop_toTopOf="parent"
                                 android:layout_marginStart="10dp"
+                                android:scaleType="centerCrop"
                                 app:layout_constraintStart_toStartOf="parent"/>
 
                             <androidx.appcompat.widget.LinearLayoutCompat

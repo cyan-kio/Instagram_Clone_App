@@ -11,8 +11,8 @@ interface LikeCommentRetrofitInterface {
     fun postLikeComment(@Path("comment-id") comment_id: Int): Call<LikeCommentResponse>
 
     @PATCH("app/posts/comments/like-status/{like-id}/{status}")
-    fun patchUnLikeComment(
+    fun patchEditLikeComment(
         @Path("like-id") like_id: Int,
-        @Path("status") status: Int,
+        @Path("status") status: Boolean,
     ): Call<LikeCommentResponse>
 }

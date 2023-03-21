@@ -1,14 +1,14 @@
 package com.cookandroid.instagram_android_moon.src.main.home.likePosting
 
-import com.cookandroid.instagram_android_moon.src.main.home.likePosting.model.LikeCommentResponse
+import com.cookandroid.instagram_android_moon.src.main.home.likePosting.model.LikePostingResponse
 
 interface LikePostingInterface {
 
-    fun onPostLikePostingSuccess(response: LikeCommentResponse)
+    fun onPostLikePostingSuccess(response: LikePostingResponse)
 
     fun onPostLikePostingFailure(message: String)
 
-    fun onPatchUnLikePostingSuccess(response: LikeCommentResponse)
+    fun onPatchEditLikePostingSuccess(response: LikePostingResponse)
 
-    fun onPatchUnLikePostingFailure(message: String)
+    fun onPatchEditLikePostingFailure(message: String)
 }

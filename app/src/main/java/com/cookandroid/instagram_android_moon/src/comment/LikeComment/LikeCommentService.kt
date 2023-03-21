@@ -9,8 +9,8 @@ import retrofit2.Response
 class LikeCommentService(val likeCommentInterface: LikeCommentInterface) {
     private val likeCommentRetrofitInterface = ApplicationClass.sRetrofit.create(LikeCommentRetrofitInterface::class.java)
 
-    fun tryPostLikeComment(post_id: Int) {
-        likeCommentRetrofitInterface.postLikeComment(post_id).enqueue(object: Callback<LikeCommentResponse>{
+    fun tryPostLikeComment(comment_id: Int) {
+        likeCommentRetrofitInterface.postLikeComment(comment_id).enqueue(object: Callback<LikeCommentResponse>{
             override fun onResponse(
                 call: Call<LikeCommentResponse>,
                 response: Response<LikeCommentResponse>
@@ -24,17 +24,17 @@ class LikeCommentService(val likeCommentInterface: LikeCommentInterface) {
         })
     }
 
-    fun tryPatchUnLikeComment(like_id: Int, status: Int) {
-        likeCommentRetrofitInterface.patchUnLikeComment(like_id, status).enqueue(object: Callback<LikeCommentResponse>{
+    fun tryPatchEditLikeComment(like_id: Int, status: Boolean) {
+        likeCommentRetrofitInterface.patchEditLikeComment(like_id, status).enqueue(object: Callback<LikeCommentResponse>{
             override fun onResponse(
                 call: Call<LikeCommentResponse>,
                 response: Response<LikeCommentResponse>
             ) {
-                likeCommentInterface.onPatchUnLikeCommentSuccess(response.body() as LikeCommentResponse)
+                likeCommentInterface.onPatchEditLikeCommentSuccess(response.body() as LikeCommentResponse)
             }
 
             override fun onFailure(call: Call<LikeCommentResponse>, t: Throwable) {
-                likeCommentInterface.onPatchUnLikeCommentFailure(t.message ?: "통신 오류")
+                likeCommentInterface.onPatchEditLikeCommentFailure(t.message ?: "통신 오류")
             }
         })
     }
