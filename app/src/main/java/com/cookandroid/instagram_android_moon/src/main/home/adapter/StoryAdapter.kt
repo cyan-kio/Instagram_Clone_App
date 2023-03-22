@@ -1,16 +1,20 @@
 package com.cookandroid.instagram_android_moon.src.main.home.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeFeedBinding
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerHomeStoryBinding
+import com.cookandroid.instagram_android_moon.src.comment.CommentActivity
 import com.cookandroid.instagram_android_moon.src.main.home.model.ResultHomeStories
+import com.cookandroid.instagram_android_moon.src.story.StoryActivity
 
 class StoryAdapter(val context: Context, private val resultHomeStories: MutableList<ResultHomeStories>) : RecyclerView.Adapter<StoryAdapter.ViewHolder>(){
     inner class ViewHolder(val binding: ItemRecyclerHomeStoryBinding): RecyclerView.ViewHolder(binding.root) {
@@ -23,7 +27,11 @@ class StoryAdapter(val context: Context, private val resultHomeStories: MutableL
                 if(item.view_status == 1) ivItemStoryViewUncheck.visibility = View.VISIBLE
                 else ivItemStoryViewCheck.visibility = View.VISIBLE
             }
-
+            binding.root.setOnClickListener {
+                val intent = Intent(context, StoryActivity::class.java)
+                intent.putExtra("user_id", item.user_id)
+                context.startActivity(intent)
+            }
         }
     }
 

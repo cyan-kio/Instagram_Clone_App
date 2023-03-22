@@ -17,22 +17,22 @@ class ElapsedTimeFunction {
                 value = "방금 전"
             }
             differenceValue < 3600000 -> { //59분 보다 적다면
-                value =  TimeUnit.MILLISECONDS.toMinutes(differenceValue).toString() + "분 전"
+                value =  TimeUnit.MILLISECONDS.toMinutes(differenceValue).toString() + "분"
             }
             differenceValue < 86400000 -> { //23시간 보다 적다면
-                value =  TimeUnit.MILLISECONDS.toHours(differenceValue).toString() + "시간 전"
+                value =  TimeUnit.MILLISECONDS.toHours(differenceValue).toString() + "시간"
             }
             differenceValue <  604800000 -> { //7일 보다 적다면
-                value =  TimeUnit.MILLISECONDS.toDays(differenceValue).toString() + "일 전"
+                value =  TimeUnit.MILLISECONDS.toDays(differenceValue).toString() + "일"
             }
             differenceValue < 2419200000 -> { //3주 보다 적다면
-                value =  (TimeUnit.MILLISECONDS.toDays(differenceValue)/7).toString() + "주 전"
+                value =  (TimeUnit.MILLISECONDS.toDays(differenceValue)/7).toString() + "주"
             }
             differenceValue < 31556952000 -> { //12개월 보다 적다면
-                value =  (TimeUnit.MILLISECONDS.toDays(differenceValue)/30).toString() + "개월 전"
+                value =  (TimeUnit.MILLISECONDS.toDays(differenceValue)/30).toString() + "개월"
             }
             else -> { //그 외
-                value =  (TimeUnit.MILLISECONDS.toDays(differenceValue)/365).toString() + "년 전"
+                value =  (TimeUnit.MILLISECONDS.toDays(differenceValue)/365).toString() + "년"
             }
         }
         return value
