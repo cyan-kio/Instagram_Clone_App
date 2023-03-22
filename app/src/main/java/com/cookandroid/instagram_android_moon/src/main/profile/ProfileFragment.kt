@@ -101,7 +101,7 @@ class ProfileFragment :
         Glide.with(this).load(resultProfile.profile_image_url).into(binding.ivProfileTopImage)
         binding.apply {
             tvToolbarProfileUsername.text = resultProfile.nickname
-            tvProfileUserInfoUserName.text = resultProfile.nickname
+            tvProfileUserInfoUserName.text = resultProfile.name
             tvProfileUserInfoIntroduction.text = resultProfile.introduce
             tvProfileTopPostingCount.text = resultProfile.post_count.toString()
             tvProfileTopFollowerCount.text = resultProfile.follower_count.toString()
@@ -137,6 +137,5 @@ class ProfileFragment :
         showCustomToast("오류 : $message")
         Log.d("ProfileError", message)
     }
-
 
 }

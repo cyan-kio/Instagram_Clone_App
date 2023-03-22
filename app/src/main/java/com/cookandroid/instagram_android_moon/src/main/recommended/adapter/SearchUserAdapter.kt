@@ -1,20 +1,27 @@
 package com.cookandroid.instagram_android_moon.src.main.recommended.adapter
 
 import android.content.Context
+import android.os.Bundle
+import android.provider.Settings.Global.putInt
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerSearchUserBinding
+import com.cookandroid.instagram_android_moon.src.main.MainActivity
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.FollowFunctionInterface
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.model.FollowResponse
+import com.cookandroid.instagram_android_moon.src.main.profile.other.OtherProfileFragment
 import com.cookandroid.instagram_android_moon.src.main.recommended.model.ResultSearchUser
 
 class SearchUserAdapter(val context: Context, private val resultSearchUser: MutableList<ResultSearchUser>) :
     RecyclerView.Adapter<SearchUserAdapter.ViewHolder>(), FollowFunctionInterface {
+    private val mainActivity = MainActivity()
     inner class ViewHolder(val binding: ItemRecyclerSearchUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResultSearchUser) {
@@ -44,7 +51,12 @@ class SearchUserAdapter(val context: Context, private val resultSearchUser: Muta
                 binding.tvItemSearchUserConnected.text = item.connected_friend_nickname +"님 외 " + item.connected_count+ "명이 팔로우합니다"
                 binding.tvItemSearchUserConnected.visibility = View.VISIBLE
             }
-
+            binding.root.setOnClickListener {
+                (context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_main, OtherProfileFragment(item.user_id))
+                    .addToBackStack(null)
+                    .commit()
+            }
         }
     }
 

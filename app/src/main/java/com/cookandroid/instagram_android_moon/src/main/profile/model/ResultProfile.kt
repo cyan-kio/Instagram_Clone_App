@@ -16,8 +16,15 @@ data class ResultProfile(
     @SerializedName("following_count") val following_count: Int,
     @SerializedName("post_count") val post_count: Int,
     @SerializedName("connected_count") val connected_count: Int,
-    @SerializedName("connected_friend_profiles") val connected_friend_profiles: MutableList<String>,
-    @SerializedName("account_status") val account_status: Boolean,
+    @SerializedName("connected_friend_profiles") val connected_friend_profiles: MutableList<ConnectedProfile>,
+    @SerializedName("follow_status") val follow_status: Int,
+    @SerializedName("story_status") val story_status: Int,
+    @SerializedName("account_status") val account_status: String,
     @SerializedName("created_at") val created_at: String,
     @SerializedName("updated_at") val updated_at: String
+)
+
+data class ConnectedProfile(
+    @SerializedName("nickname") val nickname: String,
+    @SerializedName("profile_image_url") val profile_image_url: String,
 )
