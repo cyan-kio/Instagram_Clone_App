@@ -6,10 +6,8 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -17,10 +15,12 @@ import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.config.ApplicationClass
 import com.cookandroid.instagram_android_moon.config.BaseFragment
 import com.cookandroid.instagram_android_moon.databinding.FragmentOtherProfileBinding
-import com.cookandroid.instagram_android_moon.databinding.FragmentProfileBinding
 import com.cookandroid.instagram_android_moon.src.main.profile.ProfileFragmentInterface
 import com.cookandroid.instagram_android_moon.src.main.profile.ProfileService
 import com.cookandroid.instagram_android_moon.src.main.profile.adapter.ProfilePagerAdapter
+import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.FollowFunctionInterface
+import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.FollowFunctionService
+import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.model.FollowResponse
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ProfileResponse
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ResultProfile
 import com.cookandroid.instagram_android_moon.src.main.profile.pager.feeds.ProfileFeedsFragment
@@ -29,16 +29,18 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class OtherProfileFragment(private val userId: Int) :
     BaseFragment<FragmentOtherProfileBinding>(FragmentOtherProfileBinding::bind, R.layout.fragment_other_profile),
-    ProfileFragmentInterface {
+    ProfileFragmentInterface, FollowFunctionInterface {
     private lateinit var profileFeedsFragment: ProfileFeedsFragment
     private lateinit var profileTaggedFragment: ProfileTaggedFragment
     private lateinit var followsFragment: com.cookandroid.instagram_android_moon.src.main.profile.follows.FollowsFragment
+    private lateinit var myUserId : String
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // fragments Init
         fragmentInitInProfile()
-
+        val myUserIdgiven: String? = ApplicationClass.sSharedPreferences.getString(ApplicationClass.LOGIN_USER_ID, null)
+        if (myUserIdgiven != null) myUserId = myUserIdgiven
         // path_Argument
         ProfileService(this).tryGetProfile(user_id = userId)
 
@@ -175,6 +177,16 @@ class OtherProfileFragment(private val userId: Int) :
             } else {
                 linearOtherProfileFollow.visibility = View.VISIBLE
             }
+            binding.btnOtherProfileFollow.setOnClickListener {
+                FollowFunctionService(this@OtherProfileFragment).tryUnFollow(myUserId.toInt(), resultProfile.user_id)
+
+            }
+            binding.btnOtherProfileFollowing.setOnClickListener {
+                FollowFunctionService(this@OtherProfileFragment).tryFollow(
+                    myUserId.toInt(),
+                    resultProfile.user_id)
+
+            }
         }
 
         binding.linearOtherProfileTopFollowerCount.setOnClickListener {
@@ -204,6 +216,28 @@ class OtherProfileFragment(private val userId: Int) :
     }
 
     override fun onGetProfileFailure(message: String) {
+        showCustomToast("오류 : $message")
+        Log.d("ProfileError", message)
+    }
+
+    override fun onPostFollowSuccess(response: FollowResponse) {
+        binding.linearOtherProfileFollow.visibility = View.GONE
+        binding.linearOtherProfileFollowing.visibility = View.VISIBLE
+        response.message?.let { showCustomToast(it) }
+    }
+
+    override fun onPostFollowFailure(message: String) {
+        showCustomToast("오류 : $message")
+        Log.d("ProfileError", message)
+    }
+
+    override fun onPostUnFollowSuccess(response: FollowResponse) {
+        binding.linearOtherProfileFollowing.visibility = View.GONE
+        binding.linearOtherProfileFollow.visibility = View.VISIBLE
+        response.message?.let { showCustomToast(it) }
+    }
+
+    override fun onPostUnFollowFailure(message: String) {
         showCustomToast("오류 : $message")
         Log.d("ProfileError", message)
     }

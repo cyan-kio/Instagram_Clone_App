@@ -9,9 +9,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
@@ -29,7 +27,9 @@ class RecommendedFragment : BaseFragment<FragmentRecommendedBinding>(FragmentRec
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        RecommendedService(this).tryGetRecommended()
+        if(binding.edtRecommendedSearch.text.toString() == "" || binding.edtRecommendedSearch.text == null ) {
+            RecommendedService(this).tryGetRecommended()
+        }
         binding.edtRecommendedSearch.setOnTouchListener { edt, event ->
             // const_setMargin
             val layoutParams = ConstraintLayout.LayoutParams(LayoutParams.MATCH_PARENT, changeDP(35))

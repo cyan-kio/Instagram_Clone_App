@@ -3,9 +3,12 @@ package com.cookandroid.instagram_android_moon.src.main.recommended.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerRecommendedGridBinding
+import com.cookandroid.instagram_android_moon.src.main.profile.other.OtherProfileFragment
 import com.cookandroid.instagram_android_moon.src.main.recommended.model.ResultRecommended
 
 class RecommendedGridAdapter(val context: Context, private val resultRecommended: MutableList<ResultRecommended>) : RecyclerView.Adapter<RecommendedGridAdapter.ViewHolder>(){
@@ -13,6 +16,12 @@ class RecommendedGridAdapter(val context: Context, private val resultRecommended
     inner class ViewHolder(val binding: ItemRecyclerRecommendedGridBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResultRecommended) {
             Glide.with(context).load(item.firstPhotoUrl).into(binding.ivItemRecommendedImage)
+            binding.root.setOnClickListener {
+                (context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_main, OtherProfileFragment(item.postId))
+                    .addToBackStack(null)
+                    .commit()
+            }
         }
     }
 

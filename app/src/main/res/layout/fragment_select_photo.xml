@@ -83,7 +83,6 @@
                         android:id="@+id/iv_new_post_photo_selected"
                         android:layout_width="match_parent"
                         android:layout_height="310dp"
-                        android:src="@drawable/img_btn_discover_people_complete"
                         android:scaleType="centerCrop"/>
 
                 </FrameLayout>
