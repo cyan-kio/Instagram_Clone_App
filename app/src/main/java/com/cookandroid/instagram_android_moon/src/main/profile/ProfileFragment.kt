@@ -1,5 +1,6 @@
 package com.cookandroid.instagram_android_moon.src.main.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.cookandroid.instagram_android_moon.src.main.profile.model.ProfileResp
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ResultProfile
 import com.cookandroid.instagram_android_moon.src.main.profile.pager.feeds.ProfileFeedsFragment
 import com.cookandroid.instagram_android_moon.src.main.profile.pager.tagged.ProfileTaggedFragment
+import com.cookandroid.instagram_android_moon.src.signin.SignInActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment :
@@ -60,6 +62,12 @@ class ProfileFragment :
 
         // image_Round_Setting
         binding.ivProfileTopImage.clipToOutline = true
+
+        // Logout
+        binding.btnToolbarProfileIconMore.setOnClickListener {
+            requireActivity().startActivity(Intent(requireActivity(), SignInActivity::class.java))
+            requireActivity().finishAffinity()
+        }
 
     }
 

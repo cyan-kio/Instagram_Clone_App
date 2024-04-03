@@ -9,7 +9,9 @@ import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerRecommendedGridBinding
 import com.cookandroid.instagram_android_moon.src.main.profile.other.OtherProfileFragment
+import com.cookandroid.instagram_android_moon.src.main.recommended.RecommendedFragment
 import com.cookandroid.instagram_android_moon.src.main.recommended.model.ResultRecommended
+import com.cookandroid.instagram_android_moon.src.main.recommended.view.ViewFragment
 
 class RecommendedGridAdapter(val context: Context, private val resultRecommended: MutableList<ResultRecommended>) : RecyclerView.Adapter<RecommendedGridAdapter.ViewHolder>(){
 
@@ -18,7 +20,7 @@ class RecommendedGridAdapter(val context: Context, private val resultRecommended
             Glide.with(context).load(item.firstPhotoUrl).into(binding.ivItemRecommendedImage)
             binding.root.setOnClickListener {
                 (context as AppCompatActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.container_main, OtherProfileFragment(item.postId))
+                    .add(R.id.container_main, ViewFragment(item.postId))
                     .addToBackStack(null)
                     .commit()
             }

@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerProfileFeedsGridBinding
+import com.cookandroid.instagram_android_moon.src.main.profile.ProfileFragment
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ResultProfileFeeds
 import com.cookandroid.instagram_android_moon.src.main.profile.other.OtherProfileFragment
+import com.cookandroid.instagram_android_moon.src.main.recommended.view.ViewFragment
 
 class ProfileFeedsGridAdapter(val context: Context, private val resultProfileFeeds: MutableList<ResultProfileFeeds>) : RecyclerView.Adapter<ProfileFeedsGridAdapter.ViewHolder>(){
 
@@ -18,7 +20,7 @@ class ProfileFeedsGridAdapter(val context: Context, private val resultProfileFee
             Glide.with(binding.ivItemProfileFeedsGrid.context).load(item.photos[0].photoUrl).into(binding.ivItemProfileFeedsGrid)
             binding.root.setOnClickListener {
                 (context as AppCompatActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.container_main, OtherProfileFragment(item.postId))
+                    .add(R.id.container_main, ViewFragment(item.postId))
                     .addToBackStack(null)
                     .commit()
             }

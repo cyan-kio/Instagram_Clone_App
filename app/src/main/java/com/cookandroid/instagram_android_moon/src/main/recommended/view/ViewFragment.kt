@@ -37,7 +37,7 @@ class ViewFragment(private val postId: Int) : BaseFragment<FragmentViewBinding>(
     }
 
     override fun onGetViewSuccess(response: ViewResponse) {
-        val item = response.result[0]
+        val item = response.result
         // profilePicture
         binding.ivTopHomeFeedProfileImg.clipToOutline = true
         Glide.with(this).load(item.profilePicture).into(binding.ivTopHomeFeedProfileImg)

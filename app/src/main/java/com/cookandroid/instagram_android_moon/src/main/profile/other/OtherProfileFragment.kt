@@ -23,6 +23,8 @@ import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfun
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.model.FollowResponse
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ProfileResponse
 import com.cookandroid.instagram_android_moon.src.main.profile.model.ResultProfile
+import com.cookandroid.instagram_android_moon.src.main.profile.other.pager.OtherProfileFeedsFragment
+import com.cookandroid.instagram_android_moon.src.main.profile.other.pager.OtherProfileTaggedFragment
 import com.cookandroid.instagram_android_moon.src.main.profile.pager.feeds.ProfileFeedsFragment
 import com.cookandroid.instagram_android_moon.src.main.profile.pager.tagged.ProfileTaggedFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -47,8 +49,8 @@ class OtherProfileFragment(private val userId: Int) :
 
         // viewPager2
         val pagerAdapter = ProfilePagerAdapter(requireActivity()).apply {
-            addFragment(profileFeedsFragment)
-            addFragment(profileTaggedFragment)
+            addFragment(OtherProfileFeedsFragment(userId))
+            addFragment(OtherProfileTaggedFragment())
         }
         binding.viewpagerOtherProfile.apply {
             adapter = pagerAdapter
@@ -178,13 +180,12 @@ class OtherProfileFragment(private val userId: Int) :
                 linearOtherProfileFollow.visibility = View.VISIBLE
             }
             binding.btnOtherProfileFollow.setOnClickListener {
-                FollowFunctionService(this@OtherProfileFragment).tryUnFollow(myUserId.toInt(), resultProfile.user_id)
-
-            }
-            binding.btnOtherProfileFollowing.setOnClickListener {
                 FollowFunctionService(this@OtherProfileFragment).tryFollow(
                     myUserId.toInt(),
                     resultProfile.user_id)
+            }
+            binding.btnOtherProfileFollowing.setOnClickListener {
+                FollowFunctionService(this@OtherProfileFragment).tryUnFollow(myUserId.toInt(), resultProfile.user_id)
 
             }
         }

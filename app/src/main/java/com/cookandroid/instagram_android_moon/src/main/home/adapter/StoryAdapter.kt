@@ -3,6 +3,7 @@ package com.cookandroid.instagram_android_moon.src.main.home.adapter
 import android.content.Context
 import android.content.Intent
 import android.provider.Settings.Global.getString
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,8 +25,9 @@ class StoryAdapter(val context: Context, private val resultHomeStories: MutableL
                 ivItemStoryProfileImg.clipToOutline = true
                 if(item.self_status == 1) tvItemStoryProfileUserName.text = context.resources.getString(R.string.myStory)
                 else tvItemStoryProfileUserName.text = item.nickname
-                if(item.view_status == 1) ivItemStoryViewUncheck.visibility = View.VISIBLE
+                if(item.view_status == 0) ivItemStoryViewUncheck.visibility = View.VISIBLE
                 else ivItemStoryViewCheck.visibility = View.VISIBLE
+                Log.d("STORYCHECK", item.view_status.toString())
             }
             binding.root.setOnClickListener {
                 val intent = Intent(context, StoryActivity::class.java)

@@ -26,10 +26,9 @@ class RecommendedFragment : BaseFragment<FragmentRecommendedBinding>(FragmentRec
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if(binding.edtRecommendedSearch.text.toString() == "" || binding.edtRecommendedSearch.text == null ) {
+            Log.d("TEXTTEST", "restartFragment")
             RecommendedService(this).tryGetRecommended()
-        }
+
         binding.edtRecommendedSearch.setOnTouchListener { edt, event ->
             // const_setMargin
             val layoutParams = ConstraintLayout.LayoutParams(LayoutParams.MATCH_PARENT, changeDP(35))
@@ -99,6 +98,7 @@ class RecommendedFragment : BaseFragment<FragmentRecommendedBinding>(FragmentRec
             this.run {
                 addItemDecoration(GridSpaceItemDecoration(3,10))
             }
+            visibility = View.VISIBLE
             response.message?.let { showCustomToast(it) }
         }
     }

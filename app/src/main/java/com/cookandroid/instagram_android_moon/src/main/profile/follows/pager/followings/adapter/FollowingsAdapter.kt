@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cookandroid.instagram_android_moon.R
 import com.cookandroid.instagram_android_moon.databinding.ItemRecyclerFollowingsBinding
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.FollowFunctionInterface
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.FollowFunctionService
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.model.FollowResponse
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.pager.followings.model.Followings
+import com.cookandroid.instagram_android_moon.src.main.profile.other.OtherProfileFragment
 
 class FollowingsAdapter(val context: Context, private val followings: MutableList<Followings>, val _userId: String) : RecyclerView.Adapter<FollowingsAdapter.ViewHolder>(),
     FollowFunctionInterface {
@@ -50,6 +53,12 @@ class FollowingsAdapter(val context: Context, private val followings: MutableLis
                 binding.ivItemFollowingsStoryUncheck.apply {
                     visibility = View.VISIBLE
                 }
+            }
+            binding.root.setOnClickListener {
+                (context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_main, OtherProfileFragment(item.user_id))
+                    .addToBackStack(null)
+                    .commit()
             }
         }
     }

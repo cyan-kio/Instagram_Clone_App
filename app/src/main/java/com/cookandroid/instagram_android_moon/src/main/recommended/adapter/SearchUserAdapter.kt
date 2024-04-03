@@ -17,6 +17,7 @@ import com.cookandroid.instagram_android_moon.src.main.MainActivity
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.FollowFunctionInterface
 import com.cookandroid.instagram_android_moon.src.main.profile.follows.followfunction.model.FollowResponse
 import com.cookandroid.instagram_android_moon.src.main.profile.other.OtherProfileFragment
+import com.cookandroid.instagram_android_moon.src.main.recommended.RecommendedFragment
 import com.cookandroid.instagram_android_moon.src.main.recommended.model.ResultSearchUser
 
 class SearchUserAdapter(val context: Context, private val resultSearchUser: MutableList<ResultSearchUser>) :
@@ -53,7 +54,7 @@ class SearchUserAdapter(val context: Context, private val resultSearchUser: Muta
             }
             binding.root.setOnClickListener {
                 (context as AppCompatActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.container_main, OtherProfileFragment(item.user_id))
+                    .add(R.id.container_main, OtherProfileFragment(item.user_id))
                     .addToBackStack(null)
                     .commit()
             }
